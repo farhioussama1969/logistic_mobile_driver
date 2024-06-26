@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "427296167611",
+    "project_id": "loogisti-38a9e",
+    "storage_bucket": "loogisti-38a9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427296167611:android:ddb143fe35c0ffe8bfbb9e",
+        "android_client_info": {
+          "package_name": "com.hoskadev.loogisti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427296167611-c4iijko06mgjd6f1n59qbh83irp6etvv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hoskadev.loogisti",
+            "certificate_hash": "d7be0c8a275b4fb4a408c559fbcdfd1191cb3ae7"
+          }
+        },
+        {
+          "client_id": "427296167611-gp98op7s9ua23o8n5gn05ta32436fgto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAQPxNpNiWxdJIg318-H3a4bUZtf0gZlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427296167611-gp98op7s9ua23o8n5gn05ta32436fgto.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.solvodev.mexaMeubleMobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427296167611:android:b2965ab09ffa46adbfbb9e",
+        "android_client_info": {
+          "package_name": "com.hoskadev.loogistidriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427296167611-gp98op7s9ua23o8n5gn05ta32436fgto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAQPxNpNiWxdJIg318-H3a4bUZtf0gZlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427296167611-gp98op7s9ua23o8n5gn05ta32436fgto.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.solvodev.mexaMeubleMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
