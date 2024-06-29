@@ -32,6 +32,7 @@ class CreateOrderCardComponent extends StatelessWidget {
           Positioned.fill(
             child: SvgPicture.asset(
               LogosAssetsConstants.vectorLogo,
+              color: MainColors.whiteColor.withOpacity(0.1),
             ),
           ),
           Padding(
@@ -60,30 +61,6 @@ class CreateOrderCardComponent extends StatelessWidget {
                           size: 30.r,
                         ),
                     ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () => Get.toNamed(Routes.CREATE_NEW_ORDER),
-                  child: TagComponent(
-                    title: '',
-                    disableShadow: true,
-                    backgroundColor: MainColors.backgroundColor(context),
-                    borderRadius: BorderRadius.circular(10.r),
-                    titleWidget: Row(
-                      children: [
-                        SvgPicture.asset(
-                          IconsAssetsConstants.addIcon,
-                          color: MainColors.textColor(context),
-                          width: 20.r,
-                        ),
-                        SizedBox(width: 10.w),
-                        Text(
-                          StringsAssetsConstants.createNewOrder,
-                          style: TextStyles.smallBodyTextStyle(context),
-                        ),
-                      ],
-                    ),
-                    textColor: MainColors.primaryColor,
                   ),
                 ),
               ],

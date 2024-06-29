@@ -13,7 +13,7 @@ class MainColors {
   static Color? warningColor(BuildContext context) => Theme.of(context).extension<ColorsStyles>()?.warningColor;
 
   static const Color primaryColor = materialColors.Color(0xFF333232);
-  static const Color secondColor = materialColors.Color(0xFF1C9102);
+  static const Color secondColor = materialColors.Color(0xFF000000);
   static const Color whiteColor = materialColors.Colors.white;
   static const Color blackColor = materialColors.Color(0xFF333232);
   static const Color transparentColor = materialColors.Colors.transparent;
