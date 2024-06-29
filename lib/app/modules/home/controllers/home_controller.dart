@@ -5,6 +5,7 @@ import 'package:loogisti/app/core/constants/storage_keys_constants.dart';
 import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/services/local_storage_service.dart';
 import 'package:loogisti/app/data/models/home_orders_model.dart';
+import 'package:loogisti/app/data/providers/loogistic_api/auth_provider.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/order_provider.dart';
 
 class HomeController extends GetxController {
@@ -76,10 +77,30 @@ class HomeController extends GetxController {
     getHomeOrdersData();
   }
 
+  bool isAvailable = false;
+  Future<void> changeIsAvailable(bool value, {bool? withoutRequest}) async {
+    isAvailable = value;
+    update([GetBuildersIdsConstants.homeAppBar]);
+    await LocalStorageService.saveData(key: StorageKeysConstants.driverAvailability, value: isAvailable, type: DataTypes.bool);
+    if (withoutRequest != true) {
+      isAvailable = (await changeAvailableStatus()) ?? false;
+      await LocalStorageService.saveData(key: StorageKeysConstants.driverAvailability, value: isAvailable, type: DataTypes.bool);
+      update([GetBuildersIdsConstants.homeAppBar]);
+    }
+  }
+
+  Future<bool?> changeAvailableStatus() async {
+    return (await AuthProvider().changeDriverStatus(
+      onLoading: () {},
+      onFinal: () {},
+    ));
+  }
+
   @override
   Future<void> onInit() async {
     getHomeOrdersData();
-    changeIsNoticed(await LocalStorageService.loadData(key: StorageKeysConstants.homeNoteVisibility, type: DataTypes.bool) ?? true);
+    changeIsAvailable(await LocalStorageService.loadData(key: StorageKeysConstants.driverAvailability, type: DataTypes.bool) ?? false,
+        withoutRequest: true);
     super.onInit();
   }
 

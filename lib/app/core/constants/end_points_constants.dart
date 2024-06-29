@@ -7,15 +7,16 @@ class EndPointsConstants {
   static const String about = 'who-are-we';
 
   //auth provider
-  static const String socialSignIn = 'user/login';
-  static const String getUserData = 'user/info';
-  static const String updateUserData = 'user/update';
-  static const String logout = 'user/logout';
-  static const String deleteAccount = 'user/destroy';
+  static const String socialSignIn = 'driver/login';
+  static const String getUserData = 'driver/info';
+  static const String updateUserData = 'driver/update';
+  static const String logout = 'driver/logout';
+  static const String deleteAccount = 'driver/destroy';
+  static const String changeStatus = 'driver/activate';
 
   //order provider
   static const String createOrder = 'order/create';
-  static const String getOrders = 'user/order/all';
+  static const String getOrders = 'driver/order/all';
   static const String getDeliveryPricing = 'order/price';
   static const String couponValidate = 'coupon/validate';
   static const String commentOrder = 'comment/create';

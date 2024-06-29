@@ -122,4 +122,21 @@ class AuthProvider {
     if (response?.body != null) {}
     return null;
   }
+
+  Future<bool?> changeDriverStatus({
+    required Function onLoading,
+    required Function onFinal,
+  }) async {
+    ApiResponse? response = await HttpClientService.sendRequest(
+      endPoint: EndPointsConstants.changeStatus,
+      requestType: HttpRequestTypes.get,
+      showErrorToast: false,
+      onLoading: () => onLoading(),
+      onFinal: () => onFinal(),
+    );
+    if (response?.body != null) {
+      return response?.body['activate'];
+    }
+    return null;
+  }
 }

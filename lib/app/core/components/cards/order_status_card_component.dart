@@ -49,7 +49,7 @@ class OrderStatusCardComponent extends StatelessWidget {
                     child: Text(
                       orderStatusData.name ?? '',
                       style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                        color: orderStatusData.backgroundColor,
+                        color: orderStatusData.color,
                       ),
                     ),
                   ),

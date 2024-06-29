@@ -153,29 +153,6 @@ class SignInView extends GetView<SignInController> {
                             .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
                             .move(begin: const Offset(-15, 0), curve: Curves.easeOutQuad),
                       SizedBox(height: 30.h),
-                      AnimatorComponent(
-                        time: const Duration(milliseconds: 500),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                StringsAssetsConstants.registerAsADriver,
-                                style: TextStyles.largeBodyTextStyle(context).copyWith(
-                                  fontFamily: FontsFamilyAssetsConstants.bold,
-                                  color: MainColors.primaryColor,
-                                ),
-                              ),
-                              SizedBox(width: 3.w),
-                              SvgPicture.asset(
-                                Get.locale?.languageCode == 'en' ? IconsAssetsConstants.arrowRightIcon : IconsAssetsConstants.arrowLeftIcon,
-                                width: 20.r,
-                                color: MainColors.primaryColor,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                   const Expanded(flex: 4, child: SizedBox.shrink()),

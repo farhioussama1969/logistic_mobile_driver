@@ -42,7 +42,7 @@ class MyPersonnelInformationController extends GetxController {
 
   void fillUserDetails() {
     fullNameController.text = Get.find<UserController>().user?.fullname ?? '';
-    phoneNumberController.text = Get.find<UserController>().user?.phoneNumber ?? '';
+    phoneNumberController.text = Get.find<UserController>().user?.phone ?? '';
     if (Get.find<UserController>().user?.gender == 'male' || Get.find<UserController>().user?.gender == 'female') {
       changeSelectedGander(Get.find<UserController>().user?.gender == 'male' ? GanderType.male : GanderType.female);
     }

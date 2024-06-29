@@ -153,4 +153,6 @@ static String get veryBad{return "very bad".tr;}
 static String get satisfied{return "satisfied".tr;}
 static String get good{return "good".tr;}
 static String get excellent{return "excellent".tr;}
+static String get available{return "available".tr;}
+static String get busy{return "busy".tr;}
 }

@@ -5,4 +5,5 @@ class StorageKeysConstants {
   static const String localeLang = 'local_lang';
   static const String localeTheme = 'local_theme';
   static const String homeNoteVisibility = 'home_note_visibility';
+  static const String driverAvailability = 'driver_availability';
 }

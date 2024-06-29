@@ -19,7 +19,7 @@ class SwitchComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterSwitch(
-      activeColor: MainColors.primaryColor,
+      activeColor: MainColors.successColor(context)!,
       inactiveColor: MainColors.disableColor(context)!,
       activeIcon: activeIconPath != null ? SvgPicture.asset(activeIconPath!, color: MainColors.primaryColor) : null,
       inactiveIcon: inactiveIconPath != null ? SvgPicture.asset(inactiveIconPath!, color: MainColors.primaryColor) : null,

@@ -3,15 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/components/buttons/icon_button_component.dart';
 import 'package:loogisti/app/core/components/images/network_image_component.dart';
+import 'package:loogisti/app/core/components/inputs/switch_component.dart';
 import 'package:loogisti/app/core/constants/get_builders_ids_constants.dart';
 import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
+import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
 import 'package:loogisti/app/modules/user_controller.dart';
 import 'package:loogisti/app/routes/app_pages.dart';
 
 class HomeTopBarComponent extends StatelessWidget {
-  const HomeTopBarComponent({super.key});
+  const HomeTopBarComponent({super.key, required this.isAvailable, required this.onAvailableChange});
+
+  final bool isAvailable;
+  final Function(bool value) onAvailableChange;
 
   @override
   Widget build(BuildContext context) {
@@ -79,9 +84,29 @@ class HomeTopBarComponent extends StatelessWidget {
             ],
           ),
         ),
+        Row(
+          children: [
+            SwitchComponent(
+              onChange: (value) => onAvailableChange(value),
+              enable: isAvailable,
+            ),
+            SizedBox(width: 5.w),
+            Text(
+              isAvailable ? StringsAssetsConstants.available : StringsAssetsConstants.busy,
+              style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                color: isAvailable ? MainColors.successColor(context) : MainColors.disableColor(context),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(width: 10.w),
         IconButtonComponent(
           iconLink: IconsAssetsConstants.notificationIcon,
           onTap: () => Get.toNamed(Routes.NOTIFICATIONS),
+          buttonWidth: 40.r,
+          buttonHeight: 40.r,
+          iconWidth: 20.r,
+          iconHeight: 20.r,
         ),
       ]),
     ));

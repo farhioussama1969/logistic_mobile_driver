@@ -24,7 +24,14 @@ class HomeView extends GetView<HomeController> {
         width: double.infinity,
         child: Column(
           children: [
-            HomeTopBarComponent()
+            GetBuilder<HomeController>(
+                    id: GetBuildersIdsConstants.homeAppBar,
+                    builder: (logic) {
+                      return HomeTopBarComponent(
+                        isAvailable: logic.isAvailable,
+                        onAvailableChange: logic.changeIsAvailable,
+                      );
+                    })
                 .animate(delay: 100.ms)
                 .fadeIn(duration: 900.ms, delay: 300.ms)
                 .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
@@ -42,24 +49,7 @@ class HomeView extends GetView<HomeController> {
                 .fadeIn(duration: 900.ms, delay: 300.ms)
                 .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
                 .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
-            GetBuilder<HomeController>(
-              id: GetBuildersIdsConstants.homeNote,
-              builder: (logic) {
-                return logic.isNoticed
-                    ? HomeNoteComponent(
-                        onClose: () async {
-                          logic.changeIsNoticed(false);
-                          await LocalStorageService.saveData(
-                              key: StorageKeysConstants.homeNoteVisibility, value: false, type: DataTypes.bool);
-                        },
-                      )
-                    : SizedBox(height: 10.h);
-              },
-            )
-                .animate(delay: 300.ms)
-                .fadeIn(duration: 900.ms, delay: 300.ms)
-                .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                .move(begin: const Offset(100, 0), curve: Curves.easeOutQuad),
+
             Expanded(
               child: GetBuilder<HomeController>(
                 id: GetBuildersIdsConstants.homeOrders,

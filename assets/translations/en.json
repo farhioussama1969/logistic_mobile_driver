@@ -1,5 +1,5 @@
 {
-  "app name": "Loogisti",
+  "app name": "Loogisti Driver",
   "success": "Process succeeded",
   "warning": "Warning",
   "info": "Info",
@@ -168,7 +168,10 @@
   "very bad": "Very bad",
   "satisfied": "Satisfied",
     "good": "Good",
-    "excellent": "Excellent"
+    "excellent": "Excellent",
+
+  "available": "Available",
+    "busy": "Busy"
 
 
 
