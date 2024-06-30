@@ -67,6 +67,7 @@ class HomeView extends GetView<HomeController> {
                       orders: logic.homeOrdersData?.orders?.data ?? [],
                       loading: logic.getOrdersLoading,
                       scrollController: logic.scrollController,
+                      onAcceptOrReject: (index, isAccept) => logic.acceptOrRejectOrder(index, isAccept: isAccept),
                     ),
                   );
                 },

@@ -21,9 +21,11 @@ import 'package:loogisti/app/routes/app_pages.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class OrderCardComponent extends StatelessWidget {
-  const OrderCardComponent({super.key, this.orderData});
+  const OrderCardComponent({super.key, this.orderData, this.onAccept, this.onReject});
 
   final OrderModel? orderData;
+  final Function? onAccept;
+  final Function? onReject;
 
   @override
   Widget build(BuildContext context) {
@@ -414,7 +416,11 @@ class OrderCardComponent extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         PrimaryButtonComponent(
-                          onTap: () {},
+                          onTap: () {
+                            if (onAccept != null) {
+                              onAccept!();
+                            }
+                          },
                           text: StringsAssetsConstants.accept,
                           width: 100.w,
                           height: 40.h,
@@ -423,10 +429,15 @@ class OrderCardComponent extends StatelessWidget {
                           borderColor: MainColors.successColor(context),
                           disableShadow: true,
                           withoutPadding: true,
+                          isLoading: orderData?.acceptingLoading,
                         ),
                         SizedBox(width: 20.w),
                         PrimaryButtonComponent(
-                          onTap: () {},
+                          onTap: () {
+                            if (onReject != null) {
+                              onReject!();
+                            }
+                          },
                           text: StringsAssetsConstants.reject,
                           width: 100.w,
                           height: 40.h,
@@ -435,6 +446,7 @@ class OrderCardComponent extends StatelessWidget {
                           borderColor: MainColors.errorColor(context),
                           disableShadow: true,
                           withoutPadding: true,
+                          isLoading: orderData?.rejectingLoading,
                         ),
                       ],
                     ),

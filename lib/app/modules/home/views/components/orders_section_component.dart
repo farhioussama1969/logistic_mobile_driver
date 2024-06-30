@@ -11,11 +11,13 @@ import 'package:loogisti/app/data/models/order_model.dart';
 import 'package:loogisti/app/modules/home/views/components/create_order_card_big_component.dart';
 
 class OrdersSectionComponent extends StatelessWidget {
-  const OrdersSectionComponent({super.key, required this.orders, required this.loading, required this.scrollController});
+  const OrdersSectionComponent(
+      {super.key, required this.orders, required this.loading, required this.scrollController, required this.onAcceptOrReject});
 
   final List<OrderModel> orders;
   final bool loading;
   final ScrollController scrollController;
+  final Function(int index, bool isAccept) onAcceptOrReject;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,8 @@ class OrdersSectionComponent extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return OrderCardComponent(
                       orderData: index < orders.length ? orders[index] : null,
+                      onAccept: () => onAcceptOrReject(index, true),
+                      onReject: () => onAcceptOrReject(index, false),
                     )
                         .animate(delay: (index * 100).ms)
                         .fadeIn(duration: 900.ms, delay: 300.ms)

@@ -112,8 +112,12 @@ class HomeController extends GetxController {
                 update([GetBuildersIdsConstants.homeOrders]);
               })
           .then(
-            (value) => {},
-          );
+        (value) {
+          if (value != null) {
+            refreshHome();
+          }
+        },
+      );
     }
   }
 
