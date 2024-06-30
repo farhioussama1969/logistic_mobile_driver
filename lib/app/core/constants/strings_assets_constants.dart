@@ -155,4 +155,7 @@ static String get good{return "good".tr;}
 static String get excellent{return "excellent".tr;}
 static String get available{return "available".tr;}
 static String get busy{return "busy".tr;}
+static String get progress{return "progress".tr;}
+static String get completed{return "completed".tr;}
+static String get canceled{return "canceled".tr;}
 }

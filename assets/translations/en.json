@@ -171,7 +171,11 @@
     "excellent": "Excellent",
 
   "available": "Available",
-    "busy": "Busy"
+    "busy": "Busy",
+
+  "progress" : "Progress",
+    "completed" : "Completed",
+    "canceled" : "Canceled"
 
 
 

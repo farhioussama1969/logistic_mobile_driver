@@ -40,7 +40,10 @@ class HomeView extends GetView<HomeController> {
               id: GetBuildersIdsConstants.homeOrders,
               builder: (logic) {
                 return CreateOrderCardComponent(
-                  count: logic.homeOrdersData?.count,
+                  count: logic.homeOrdersData?.orders?.meta?.total ?? 0,
+                  canceled: logic.homeOrdersData?.rejected ?? 0,
+                  completed: logic.homeOrdersData?.completed ?? 0,
+                  progress: logic.homeOrdersData?.progress ?? 0,
                   loading: logic.getOrdersLoading,
                 );
               },
