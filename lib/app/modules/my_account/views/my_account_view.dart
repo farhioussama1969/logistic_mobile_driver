@@ -105,16 +105,6 @@ class MyAccountView extends GetView<MyAccountController> {
                               .fadeIn(duration: 900.ms, delay: 300.ms)
                               .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
                               .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
-                          SizedBox(height: 15.h),
-                          MyAccountItemComponent(
-                            iconLink: IconsAssetsConstants.registerAsDriverIcon,
-                            title: StringsAssetsConstants.registerAsADriver,
-                            onTap: () {},
-                          )
-                              .animate(delay: 450.ms)
-                              .fadeIn(duration: 900.ms, delay: 300.ms)
-                              .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                              .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
                         ],
                       ),
                       SizedBox(height: 30.h),
