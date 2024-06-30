@@ -47,7 +47,7 @@ class CreateOrderCardBigComponent extends StatelessWidget {
                         width: double.infinity,
                         height: double.infinity,
                         child: SvgPicture.asset(
-                          ImagesAssetsConstants.createNewOrderCardBackgroundImage,
+                          ImagesAssetsConstants.noOrdersBackgroundImage,
                           fit: BoxFit.fill,
                           width: double.infinity,
                         ),
@@ -66,7 +66,7 @@ class CreateOrderCardBigComponent extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      StringsAssetsConstants.createNewOrderDescription,
+                                      StringsAssetsConstants.getASpecialIncomeWith,
                                       style: TextStyles.mediumBodyTextStyle(context).copyWith(
                                         color: MainColors.whiteColor,
                                       ),
@@ -111,17 +111,15 @@ class CreateOrderCardBigComponent extends StatelessWidget {
                                       .fadeIn(duration: 900.ms, delay: 300.ms)
                                       .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
                                 ),
-                                PrimaryButtonComponent(
-                                  height: 50.h,
-                                  width: 150.w,
-                                  onTap: () => Get.toNamed(Routes.CREATE_NEW_ORDER),
-                                  textStyle: TextStyles.smallBodyTextStyle(context).copyWith(
-                                    color: MainColors.whiteColor,
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.only(start: 20.w),
+                                    child: Text(
+                                      StringsAssetsConstants.youHaveNotReceivedAnyRequestsYetWaitToReceiveRequests,
+                                      textAlign: TextAlign.end,
+                                      style: TextStyles.mediumBodyTextStyle(context),
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  text: StringsAssetsConstants.createNewOrder,
-                                  iconPath: IconsAssetsConstants.addIcon,
-                                  iconColor: MainColors.whiteColor,
                                 ),
                               ],
                             ),

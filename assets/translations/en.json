@@ -175,7 +175,13 @@
 
   "progress" : "Progress",
     "completed" : "Completed",
-    "canceled" : "Canceled"
+    "canceled" : "Canceled",
+
+  "Get a special income with": "Get a special income with",
+  "You have not received any requests yet Wait to receive requests": "You have not received \n any requests yet. Wait to receive requests",
+
+  "accept": "Accept",
+    "reject": "Reject"
 
 
 

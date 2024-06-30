@@ -20,30 +20,37 @@ class OrderModel {
   String? puckUpName;
   double? distance;
   double? currentDistance;
+  int? acceptButton;
+  int? rejectButton;
   List<OrderStatusModel>? status;
   OrderComponentModel? orderComponent;
+  bool acceptingLoading = false;
+  bool rejectingLoading = false;
 
-  OrderModel(
-      {this.id,
-      this.userId,
-      this.driverId,
-      this.price,
-      this.deleveryCost,
-      this.percentage,
-      this.pickupLocationLong,
-      this.pickupLocationLate,
-      this.deliveryLocationLong,
-      this.deliveryLocationLate,
-      this.createdAt,
-      this.deleveryNewCost,
-      this.totaleCost,
-      this.driverPhone,
-      this.status,
-      this.deliveryName,
-      this.puckUpName,
-      this.distance,
-      this.currentDistance,
-      this.orderComponent});
+  OrderModel({
+    this.id,
+    this.userId,
+    this.driverId,
+    this.price,
+    this.deleveryCost,
+    this.percentage,
+    this.pickupLocationLong,
+    this.pickupLocationLate,
+    this.deliveryLocationLong,
+    this.deliveryLocationLate,
+    this.createdAt,
+    this.deleveryNewCost,
+    this.totaleCost,
+    this.driverPhone,
+    this.status,
+    this.deliveryName,
+    this.puckUpName,
+    this.distance,
+    this.currentDistance,
+    this.orderComponent,
+    this.acceptButton,
+    this.rejectButton,
+  });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -62,6 +69,8 @@ class OrderModel {
     driverPhone = json['driver_phone'];
     deliveryName = json['delivery_name'];
     puckUpName = json['pickup_name'];
+    acceptButton = json['acceptButton'];
+    rejectButton = json['rejectButton'];
     if (json['status'] != null) {
       status = <OrderStatusModel>[];
       json['status'].forEach((v) {

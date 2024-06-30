@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'dart:math' as math; // import this
 
 import 'package:loogisti/app/core/components/animations/animator_component.dart';
+import 'package:loogisti/app/core/components/buttons/primary_button_component.dart';
 import 'package:loogisti/app/core/components/cards/tag_component.dart';
 import 'package:loogisti/app/core/components/shimmers/order_shimmer_component.dart';
 import 'package:loogisti/app/core/components/text/animated_type_text_component.dart';
@@ -401,6 +402,43 @@ class OrderCardComponent extends StatelessWidget {
                       ],
                     ),
                   ),
+                  if (orderData?.acceptButton != null && orderData?.rejectButton != null)
+                    Divider(
+                      color: MainColors.textColor(context)!.withOpacity(0.1),
+                      endIndent: 20.w,
+                      indent: 20.w,
+                    ),
+                  if (orderData?.acceptButton != null && orderData?.rejectButton != null) SizedBox(height: 5.h),
+                  if (orderData?.acceptButton != null && orderData?.rejectButton != null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PrimaryButtonComponent(
+                          onTap: () {},
+                          text: StringsAssetsConstants.accept,
+                          width: 100.w,
+                          height: 40.h,
+                          backgroundColor: MainColors.successColor(context)!.withOpacity(0.2),
+                          textColor: MainColors.successColor(context),
+                          borderColor: MainColors.successColor(context),
+                          disableShadow: true,
+                          withoutPadding: true,
+                        ),
+                        SizedBox(width: 20.w),
+                        PrimaryButtonComponent(
+                          onTap: () {},
+                          text: StringsAssetsConstants.reject,
+                          width: 100.w,
+                          height: 40.h,
+                          backgroundColor: MainColors.errorColor(context)!.withOpacity(0.2),
+                          textColor: MainColors.errorColor(context),
+                          borderColor: MainColors.errorColor(context),
+                          disableShadow: true,
+                          withoutPadding: true,
+                        ),
+                      ],
+                    ),
+                  if (orderData?.acceptButton != null && orderData?.rejectButton != null) SizedBox(height: 15.h),
                 ],
               ),
             ),

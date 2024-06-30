@@ -57,10 +57,17 @@ class HomeView extends GetView<HomeController> {
               child: GetBuilder<HomeController>(
                 id: GetBuildersIdsConstants.homeOrders,
                 builder: (logic) {
-                  return OrdersSectionComponent(
-                    orders: logic.homeOrdersData?.orders?.data ?? [],
-                    loading: logic.getOrdersLoading,
-                    scrollController: logic.scrollController,
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      logic.changeHomeOrdersData(null, refresh: true);
+                      logic.currentOrdersPage = 1;
+                      logic.refreshHome();
+                    },
+                    child: OrdersSectionComponent(
+                      orders: logic.homeOrdersData?.orders?.data ?? [],
+                      loading: logic.getOrdersLoading,
+                      scrollController: logic.scrollController,
+                    ),
                   );
                 },
               ),

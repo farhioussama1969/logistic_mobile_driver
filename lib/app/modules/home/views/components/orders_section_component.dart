@@ -21,7 +21,7 @@ class OrdersSectionComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       controller: scrollController,
-      physics: const BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: Column(
         children: [
           SizedBox(height: 10.h),

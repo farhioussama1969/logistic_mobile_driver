@@ -78,47 +78,154 @@ class CreateOrderCardComponent extends StatelessWidget {
         SizedBox(height: 10.h),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: MainColors.warningColor(context),
-                    borderRadius: BorderRadius.circular(15.r),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                        child: SvgPicture.asset(
-                          LogosAssetsConstants.vectorLogo,
-                          color: MainColors.whiteColor.withOpacity(0.1),
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: MainColors.warningColor(context),
+                      borderRadius: BorderRadius.circular(15.r),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: SvgPicture.asset(
+                            LogosAssetsConstants.vectorLogo,
+                            color: MainColors.whiteColor.withOpacity(0.1),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
-                        child: Row(
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      IconsAssetsConstants.orderIcon,
+                                      color: MainColors.whiteColor,
+                                      width: 24.r,
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    if (progress != null)
+                                      Center(
+                                        child: Text(
+                                          '${progress ?? 0} ${StringsAssetsConstants.progress}',
+                                          style: TextStyles.mediumLabelTextStyle(context).copyWith(
+                                            color: MainColors.whiteColor,
+                                          ),
+                                        ),
+                                      ),
+                                    if (progress == null && loading)
+                                      LoadingAnimationWidget.staggeredDotsWave(
+                                        color: MainColors.whiteColor,
+                                        size: 30.r,
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10.w),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: MainColors.successColor(context),
+                          borderRadius: BorderRadius.circular(15.r),
+                        ),
+                        child: Stack(
                           children: [
-                            Expanded(
+                            Positioned.fill(
+                              child: SvgPicture.asset(
+                                LogosAssetsConstants.vectorLogo,
+                                color: MainColors.whiteColor.withOpacity(0.1),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                               child: Row(
                                 children: [
-                                  SvgPicture.asset(
-                                    IconsAssetsConstants.orderIcon,
-                                    color: MainColors.whiteColor,
-                                    width: 24.r,
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          IconsAssetsConstants.orderIcon,
+                                          color: MainColors.whiteColor,
+                                          width: 24.r,
+                                        ),
+                                        SizedBox(width: 5.w),
+                                        if (completed != null)
+                                          Text(
+                                            '${completed ?? 0} ${StringsAssetsConstants.completed}',
+                                            style: TextStyles.mediumLabelTextStyle(context).copyWith(
+                                              color: MainColors.whiteColor,
+                                            ),
+                                          ),
+                                        if (completed == null && loading)
+                                          LoadingAnimationWidget.staggeredDotsWave(
+                                            color: MainColors.whiteColor,
+                                            size: 30.r,
+                                          ),
+                                      ],
+                                    ),
                                   ),
-                                  SizedBox(width: 5.w),
-                                  if (progress != null)
-                                    Text(
-                                      '${progress ?? 0} ${StringsAssetsConstants.orders}',
-                                      style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                        color: MainColors.whiteColor,
-                                      ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: MainColors.errorColor(context),
+                          borderRadius: BorderRadius.circular(15.r),
+                        ),
+                        child: Stack(
+                          children: [
+                            Positioned.fill(
+                              child: SvgPicture.asset(
+                                LogosAssetsConstants.vectorLogo,
+                                color: MainColors.whiteColor.withOpacity(0.1),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          IconsAssetsConstants.orderIcon,
+                                          color: MainColors.whiteColor,
+                                          width: 24.r,
+                                        ),
+                                        SizedBox(width: 5.w),
+                                        if (canceled != null)
+                                          Text(
+                                            '${canceled ?? 0} ${StringsAssetsConstants.canceled}',
+                                            style: TextStyles.mediumLabelTextStyle(context).copyWith(
+                                              color: MainColors.whiteColor,
+                                            ),
+                                          ),
+                                        if (canceled == null && loading)
+                                          LoadingAnimationWidget.staggeredDotsWave(
+                                            color: MainColors.whiteColor,
+                                            size: 30.r,
+                                          ),
+                                      ],
                                     ),
-                                  if (progress == null && loading)
-                                    LoadingAnimationWidget.staggeredDotsWave(
-                                      color: MainColors.whiteColor,
-                                      size: 30.r,
-                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -128,110 +235,8 @@ class CreateOrderCardComponent extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: MainColors.warningColor(context),
-                        borderRadius: BorderRadius.circular(15.r),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned.fill(
-                            child: SvgPicture.asset(
-                              LogosAssetsConstants.vectorLogo,
-                              color: MainColors.whiteColor.withOpacity(0.1),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        IconsAssetsConstants.orderIcon,
-                                        color: MainColors.whiteColor,
-                                        width: 24.r,
-                                      ),
-                                      SizedBox(width: 5.w),
-                                      if (progress != null)
-                                        Text(
-                                          '${progress ?? 0} ${StringsAssetsConstants.orders}',
-                                          style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                            color: MainColors.whiteColor,
-                                          ),
-                                        ),
-                                      if (progress == null && loading)
-                                        LoadingAnimationWidget.staggeredDotsWave(
-                                          color: MainColors.whiteColor,
-                                          size: 30.r,
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: MainColors.warningColor(context),
-                        borderRadius: BorderRadius.circular(15.r),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned.fill(
-                            child: SvgPicture.asset(
-                              LogosAssetsConstants.vectorLogo,
-                              color: MainColors.whiteColor.withOpacity(0.1),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        IconsAssetsConstants.orderIcon,
-                                        color: MainColors.whiteColor,
-                                        width: 24.r,
-                                      ),
-                                      SizedBox(width: 5.w),
-                                      if (progress != null)
-                                        Text(
-                                          '${progress ?? 0} ${StringsAssetsConstants.orders}',
-                                          style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                            color: MainColors.whiteColor,
-                                          ),
-                                        ),
-                                      if (progress == null && loading)
-                                        LoadingAnimationWidget.staggeredDotsWave(
-                                          color: MainColors.whiteColor,
-                                          size: 30.r,
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

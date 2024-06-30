@@ -29,7 +29,8 @@ class PrimaryButtonComponent extends StatelessWidget {
       this.textStyle,
       this.widget,
       this.animationDuration,
-      this.disableAnimation})
+      this.disableAnimation,
+      this.withoutPadding})
       : super(key: key);
 
   @required
@@ -52,13 +53,14 @@ class PrimaryButtonComponent extends StatelessWidget {
   final Widget? widget;
   final Duration? animationDuration;
   final bool? disableAnimation;
+  final bool? withoutPadding;
 
   @override
   Widget build(BuildContext context) {
     Widget button = Container(
       height: height ?? 58.h,
       width: width,
-      padding: EdgeInsets.symmetric(vertical: 4.h),
+      padding: EdgeInsets.symmetric(vertical: withoutPadding == true ? 0 : 4.h),
       decoration: BoxDecoration(
         gradient: backgroundColor == null ? gradient ?? MainColors.primaryGradientColor : null,
         color: backgroundColor,
@@ -83,7 +85,7 @@ class PrimaryButtonComponent extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1000.r)),
           backgroundColor: MainColors.transparentColor,
           primary: MainColors.primaryColor,
-          padding: EdgeInsets.symmetric(vertical: 10.h),
+          padding: EdgeInsets.symmetric(vertical: withoutPadding == true ? 0 : 10.h),
         ),
         onPressed: () {
           FocusScope.of(context).requestFocus(FocusNode());

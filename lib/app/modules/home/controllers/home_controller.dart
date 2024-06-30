@@ -96,6 +96,27 @@ class HomeController extends GetxController {
     ));
   }
 
+  void acceptOrRejectOrder(int index, {required bool isAccept}) {
+    if (isAccept) {
+      if (homeOrdersData?.orders?.data?[index].acceptingLoading == true) return;
+      OrderProvider()
+          .orderAction(
+              orderId: homeOrdersData?.orders?.data?[index].id,
+              statusId: homeOrdersData?.orders?.data?[index].acceptButton,
+              onLoading: () {
+                homeOrdersData?.orders?.data?[index].acceptingLoading = true;
+                update([GetBuildersIdsConstants.homeOrders]);
+              },
+              onFinal: () {
+                homeOrdersData?.orders?.data?[index].acceptingLoading = false;
+                update([GetBuildersIdsConstants.homeOrders]);
+              })
+          .then(
+            (value) => {},
+          );
+    }
+  }
+
   @override
   Future<void> onInit() async {
     getHomeOrdersData();
