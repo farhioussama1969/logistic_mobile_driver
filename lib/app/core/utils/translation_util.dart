@@ -7,7 +7,7 @@ import 'package:loogisti/app/core/constants/storage_keys_constants.dart';
 import 'package:loogisti/app/core/services/local_storage_service.dart';
 
 class TranslationUtil {
-  static Locale? currentLang = const Locale('en');
+  static Locale? currentLang = const Locale('ar');
 
   static void changeLang({required String lang}) {
     LocalStorageService.saveData(key: StorageKeysConstants.localeLang, value: lang, type: DataTypes.string);
