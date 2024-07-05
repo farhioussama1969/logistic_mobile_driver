@@ -322,7 +322,7 @@ class OrderCardComponent extends StatelessWidget {
                                     ),
                                   ),
                                   TextSpan(
-                                    text: '15 ${StringsAssetsConstants.km}',
+                                    text: '${(orderData?.distance ?? 0) - (orderData?.currentDistance ?? 0)} ${StringsAssetsConstants.km}',
                                     style: TextStyles.smallBodyTextStyle(context).copyWith(
                                       color: MainColors.primaryColor,
                                       fontFamily: FontsFamilyAssetsConstants.bold,
