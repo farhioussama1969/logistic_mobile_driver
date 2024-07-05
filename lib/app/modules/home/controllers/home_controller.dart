@@ -121,11 +121,19 @@ class HomeController extends GetxController {
     }
   }
 
+  bool isThereIsANewNotification = false;
+  void changeIsThereIsANewNotification(bool value) {
+    isThereIsANewNotification = value;
+    update([GetBuildersIdsConstants.homeNotification]);
+  }
+
   @override
   Future<void> onInit() async {
     getHomeOrdersData();
     changeIsAvailable(await LocalStorageService.loadData(key: StorageKeysConstants.driverAvailability, type: DataTypes.bool) ?? false,
         withoutRequest: true);
+    changeIsThereIsANewNotification(
+        await LocalStorageService.loadData(key: StorageKeysConstants.newNotification, type: DataTypes.bool) ?? false);
     super.onInit();
   }
 

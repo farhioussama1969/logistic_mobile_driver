@@ -30,4 +30,6 @@ class GetBuildersIdsConstants {
   static const String aboutBody = "about_body";
   static const String orderRating = "order_rating";
   static const String homeAppBar = "home_app_bar";
+  static const String orderDetails = "order_details";
+  static const String homeNotification = "home_notification";
 }

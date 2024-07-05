@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/constants/get_builders_ids_constants.dart';
+import 'package:loogisti/app/core/constants/storage_keys_constants.dart';
+import 'package:loogisti/app/core/services/local_storage_service.dart';
 import 'package:loogisti/app/data/models/notification_model.dart';
 import 'package:loogisti/app/data/models/pagination_model.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/notification_provider.dart';
+import 'package:loogisti/app/modules/home/controllers/home_controller.dart';
 
 class NotificationsController extends GetxController {
   final ScrollController scrollController = ScrollController();
@@ -65,6 +68,8 @@ class NotificationsController extends GetxController {
   @override
   void onInit() {
     getNotificationsData();
+    LocalStorageService.deleteData(key: StorageKeysConstants.newNotification);
+    Get.find<HomeController>().changeIsThereIsANewNotification(false);
     super.onInit();
   }
 

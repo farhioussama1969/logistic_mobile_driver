@@ -164,4 +164,21 @@ class OrderProvider {
     }
     return null;
   }
+
+  Future<OrderModel?> getOrderDetails({
+    required int? orderId,
+    required Function onLoading,
+    required Function onFinal,
+  }) async {
+    ApiResponse? response = await HttpClientService.sendRequest(
+      endPoint: '${EndPointsConstants.getOrderDetails}/$orderId',
+      requestType: HttpRequestTypes.get,
+      onLoading: () => onLoading(),
+      onFinal: () => onFinal(),
+    );
+    if (response?.body != null) {
+      return OrderModel.fromJson(response?.body['order']);
+    }
+    return null;
+  }
 }

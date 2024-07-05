@@ -58,11 +58,12 @@ class HomeView extends GetView<HomeController> {
                 id: GetBuildersIdsConstants.homeOrders,
                 builder: (logic) {
                   return RefreshIndicator(
-                    onRefresh: () async {
+                    color: MainColors.primaryColor,
+                    onRefresh: () async => Future.delayed(Duration(seconds: 1), () {
                       logic.changeHomeOrdersData(null, refresh: true);
                       logic.currentOrdersPage = 1;
                       logic.refreshHome();
-                    },
+                    }),
                     child: OrdersSectionComponent(
                       orders: logic.homeOrdersData?.orders?.data ?? [],
                       loading: logic.getOrdersLoading,

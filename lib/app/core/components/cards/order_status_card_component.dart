@@ -35,6 +35,7 @@ class OrderStatusCardComponent extends StatelessWidget {
             child: Center(
               child: NetworkImageComponent(
                 imageLink: '${orderStatusData.icon}',
+                fit: BoxFit.contain,
               ),
             ),
           ),

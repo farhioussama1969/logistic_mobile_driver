@@ -9,8 +9,10 @@ import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
 import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
+import 'package:loogisti/app/modules/home/controllers/home_controller.dart';
 import 'package:loogisti/app/modules/user_controller.dart';
 import 'package:loogisti/app/routes/app_pages.dart';
+import 'package:badges/badges.dart' as badges;
 
 class HomeTopBarComponent extends StatelessWidget {
   const HomeTopBarComponent({super.key, required this.isAvailable, required this.onAvailableChange});
@@ -100,13 +102,22 @@ class HomeTopBarComponent extends StatelessWidget {
           ],
         ),
         SizedBox(width: 10.w),
-        IconButtonComponent(
-          iconLink: IconsAssetsConstants.notificationIcon,
-          onTap: () => Get.toNamed(Routes.NOTIFICATIONS),
-          buttonWidth: 40.r,
-          buttonHeight: 40.r,
-          iconWidth: 20.r,
-          iconHeight: 20.r,
+        GetBuilder<HomeController>(
+          id: GetBuildersIdsConstants.homeNotification,
+          builder: (logic) {
+            return badges.Badge(
+              position: badges.BadgePosition.topEnd(top: 2, end: 2),
+              showBadge: logic.isThereIsANewNotification,
+              child: IconButtonComponent(
+                iconLink: IconsAssetsConstants.notificationIcon,
+                onTap: () => Get.toNamed(Routes.NOTIFICATIONS),
+                buttonWidth: 40.r,
+                buttonHeight: 40.r,
+                iconWidth: 20.r,
+                iconHeight: 20.r,
+              ),
+            );
+          },
         ),
       ]),
     ));

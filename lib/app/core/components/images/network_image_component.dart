@@ -8,12 +8,14 @@ import 'package:loogisti/app/core/constants/logos_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 
 class NetworkImageComponent extends StatelessWidget {
-  const NetworkImageComponent({Key? key, required this.imageLink, this.fit, this.errorWidget, this.thumb}) : super(key: key);
+  const NetworkImageComponent({Key? key, required this.imageLink, this.fit, this.errorWidget, this.thumb, this.loadingWidget})
+      : super(key: key);
 
   final String imageLink;
   final String? thumb;
   final BoxFit? fit;
   final Widget? errorWidget;
+  final Widget? loadingWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,17 @@ class NetworkImageComponent extends StatelessWidget {
         fit: fit ?? BoxFit.cover,
         width: double.infinity,
         height: double.infinity,
-        placeholder: (context, url) => Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
-          child: Container(
-            color: MainColors.whiteColor,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-        ),
+        placeholder: (context, url) =>
+            loadingWidget ??
+            Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                color: MainColors.whiteColor,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            ),
         errorWidget: (context, url, error) =>
             errorWidget ??
             Container(

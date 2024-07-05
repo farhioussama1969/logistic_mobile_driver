@@ -20,6 +20,7 @@ class EndPointsConstants {
   static const String getDeliveryPricing = 'order/price';
   static const String couponValidate = 'coupon/validate';
   static const String commentOrder = 'comment/create';
+  static const String getOrderDetails = 'driver/orders';
   static String changeOrderStatus(int? orderId, int? statusId) => 'order/$orderId/action/$statusId';
 
   //notification provider

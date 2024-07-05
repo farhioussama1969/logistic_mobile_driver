@@ -15,6 +15,7 @@ import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
 import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
+import 'package:loogisti/app/core/utils/color_convertor_util.dart';
 import 'package:loogisti/app/core/utils/relative_date_util.dart';
 import 'package:loogisti/app/data/models/order_model.dart';
 import 'package:loogisti/app/routes/app_pages.dart';
@@ -164,7 +165,8 @@ class OrderCardComponent extends StatelessWidget {
                                       animation: true,
                                       barRadius: Radius.circular(1000.r),
                                       backgroundColor: MainColors.disableColor(context)!.withOpacity(0.25),
-                                      progressColor: MainColors.primaryColor,
+                                      progressColor:
+                                          ColorConvertorUtil().stringColorCodeToColor(orderData?.pcolor) ?? MainColors.primaryColor,
                                       animationDuration: 300,
                                       restartAnimation: false,
                                       isRTL: Get.locale?.languageCode == 'ar',

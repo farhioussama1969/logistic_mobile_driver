@@ -67,6 +67,28 @@ class OrderDetailsController extends GetxController {
     });
   }
 
+  bool refreshOrderLoading = false;
+
+  void changeRefreshOrderLoading(bool value) {
+    refreshOrderLoading = value;
+    update([GetBuildersIdsConstants.orderDetails]);
+  }
+
+  Future<void> refreshOrder() async {
+    await OrderProvider()
+        .getOrderDetails(
+      orderId: orderData?.id,
+      onLoading: () => changeRefreshOrderLoading(true),
+      onFinal: () => changeRefreshOrderLoading(false),
+    )
+        .then((value) {
+      if (value != null) {
+        orderData = value;
+        update([GetBuildersIdsConstants.orderDetails]);
+      }
+    });
+  }
+
   @override
   void onInit() {
     if (Get.arguments != null) {

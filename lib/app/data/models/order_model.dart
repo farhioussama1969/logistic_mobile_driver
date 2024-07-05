@@ -26,6 +26,7 @@ class OrderModel {
   OrderComponentModel? orderComponent;
   bool acceptingLoading = false;
   bool rejectingLoading = false;
+  String? pcolor;
 
   OrderModel({
     this.id,
@@ -50,6 +51,7 @@ class OrderModel {
     this.orderComponent,
     this.acceptButton,
     this.rejectButton,
+    this.pcolor,
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
@@ -80,6 +82,7 @@ class OrderModel {
     if (json['component'] != null) {
       orderComponent = OrderComponentModel.fromJson(json['component']);
     }
+    pcolor = json['pcolor'];
   }
 
   Map<String, dynamic> toJson() {
@@ -106,6 +109,7 @@ class OrderModel {
     if (this.orderComponent != null) {
       data['component'] = this.orderComponent!.toJson();
     }
+    data['pcolor'] = this.pcolor;
     return data;
   }
 }
