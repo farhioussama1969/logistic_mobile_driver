@@ -36,7 +36,8 @@ class OrderCardComponent extends StatelessWidget {
     return orderData != null
         ? GestureDetector(
             onTap: () {
-              Get.toNamed(Routes.ORDER_DETAILS, arguments: {'order': orderData});
+              if ((orderData?.acceptButton == null && orderData?.rejectButton == null))
+                Get.toNamed(Routes.ORDER_DETAILS, arguments: {'order': orderData});
             },
             child: Container(
               decoration: BoxDecoration(
@@ -90,16 +91,21 @@ class OrderCardComponent extends StatelessWidget {
                           ],
                         ),
                       ),
-                      if (orderData?.driverPhone != null)
+                      if (orderData?.senderPhone != null)
                         SizedBox(
                           width: double.infinity,
                           child: Column(
                             children: [
-                              TagComponent(
-                                title: '${StringsAssetsConstants.driver}: ${orderData?.driverPhone ?? '/'}',
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(15.r),
-                                  bottomLeft: Radius.circular(15.r),
+                              GestureDetector(
+                                onTap: () {
+                                  UrlLauncherService.callPhone(phoneNUmber: '${orderData?.senderPhone ?? '/'}');
+                                },
+                                child: TagComponent(
+                                  title: '${StringsAssetsConstants.sender}: ${orderData?.senderPhone ?? '/'}',
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(15.r),
+                                    bottomLeft: Radius.circular(15.r),
+                                  ),
                                 ),
                               ),
                             ],
@@ -235,8 +241,12 @@ class OrderCardComponent extends StatelessWidget {
                                       },
                                       child: TagComponent(
                                         title: StringsAssetsConstants.trackPath,
-                                        iconPath: IconsAssetsConstants.locationIcon,
-                                        iconColor: MainColors.whiteColor,
+                                        iconPath: IconsAssetsConstants.trackPathIcon,
+                                        iconColor: MainColors.textColor(context),
+                                        textColor: MainColors.textColor(context),
+                                        backgroundColor: MainColors.inputColor(context),
+                                        disableShadow: true,
+                                        border: Border.all(color: MainColors.disableColor(context)!.withOpacity(0.5)),
                                       ),
                                     ),
                                   ],

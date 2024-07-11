@@ -27,6 +27,8 @@ class OrderModel {
   bool acceptingLoading = false;
   bool rejectingLoading = false;
   String? pcolor;
+  String? senderPhone;
+  String? reciverPhone;
 
   OrderModel({
     this.id,
@@ -52,6 +54,8 @@ class OrderModel {
     this.acceptButton,
     this.rejectButton,
     this.pcolor,
+    this.senderPhone,
+    this.reciverPhone,
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
@@ -83,6 +87,8 @@ class OrderModel {
       orderComponent = OrderComponentModel.fromJson(json['component']);
     }
     pcolor = json['pcolor'];
+    senderPhone = json['sender_phone'];
+    reciverPhone = json['reciver_phone'];
   }
 
   Map<String, dynamic> toJson() {

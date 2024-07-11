@@ -163,4 +163,6 @@ static String get youHaveNotReceivedAnyRequestsYetWaitToReceiveRequests{return "
 static String get accept{return "accept".tr;}
 static String get reject{return "reject".tr;}
 static String get trackPath{return "track path".tr;}
+static String get sender{return "sender".tr;}
+static String get receiver{return "receiver".tr;}
 }

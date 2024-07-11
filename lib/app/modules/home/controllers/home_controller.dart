@@ -118,6 +118,27 @@ class HomeController extends GetxController {
           }
         },
       );
+    } else {
+      if (homeOrdersData?.orders?.data?[index].rejectingLoading == true) return;
+      OrderProvider()
+          .orderAction(
+              orderId: homeOrdersData?.orders?.data?[index].id,
+              statusId: homeOrdersData?.orders?.data?[index].rejectButton,
+              onLoading: () {
+                homeOrdersData?.orders?.data?[index].rejectingLoading = true;
+                update([GetBuildersIdsConstants.homeOrders]);
+              },
+              onFinal: () {
+                homeOrdersData?.orders?.data?[index].rejectingLoading = false;
+                update([GetBuildersIdsConstants.homeOrders]);
+              })
+          .then(
+        (value) {
+          if (value != null) {
+            refreshHome();
+          }
+        },
+      );
     }
   }
 

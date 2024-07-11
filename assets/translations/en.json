@@ -183,7 +183,10 @@
   "accept": "Accept",
     "reject": "Reject",
 
-  "track path": "Track path"
+  "track path": "Track path",
+
+  "sender": "Sender",
+    "receiver": "Receiver"
 
 
 

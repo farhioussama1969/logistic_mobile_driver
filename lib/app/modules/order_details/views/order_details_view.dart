@@ -19,6 +19,7 @@ import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/services/url_launcher_service.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
+import 'package:loogisti/app/core/utils/color_convertor_util.dart';
 import 'package:loogisti/app/modules/order_details/views/components/order_statuses_history_section_component.dart';
 import 'package:loogisti/app/modules/order_details/views/components/rating_window_component.dart';
 
@@ -227,6 +228,8 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                             },
                                             child: TagComponent(
                                               title: '',
+                                              backgroundColor: ColorConvertorUtil()
+                                                  .stringColorCodeToColor(controller.orderData?.orderComponent?.buttons?[i].bgcolor),
                                               titleWidget: controller.orderData?.orderComponent?.buttons?[i].isLoading != true
                                                   ? Row(
                                                       children: [
@@ -243,7 +246,8 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                                         Text(
                                                           controller.orderData?.orderComponent?.buttons?[i].text ?? '',
                                                           style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                                            color: MainColors.whiteColor,
+                                                            color: ColorConvertorUtil().stringColorCodeToColor(
+                                                                controller.orderData?.orderComponent?.buttons?[i].color),
                                                           ),
                                                         ),
                                                       ],
