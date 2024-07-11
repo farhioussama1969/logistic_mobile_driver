@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:loogisti/app/core/components/images/network_image_component.dart';
+import 'package:loogisti/app/core/components/pop_ups/toast_component.dart';
+import 'package:loogisti/app/core/constants/fonts_family_assets_constants.dart';
 import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
+import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
 import 'package:loogisti/app/data/models/notification_model.dart';
@@ -45,30 +50,12 @@ class NotificationCardComponent extends StatelessWidget {
                                     : MainColors.primaryColor,
                 borderRadius: BorderRadius.circular(13.r),
               ),
-              child: SvgPicture.asset(
-                notification.typeof == "1"
-                    ? IconsAssetsConstants.notificationDiscountIcon
-                    : notification.typeof == "2"
-                        ? IconsAssetsConstants.acceptedOrderNotificationIcon
-                        : notification.typeof == "3"
-                            ? IconsAssetsConstants.rejectedOrderNotificationIcon
-                            : notification.typeof == "4"
-                                ? IconsAssetsConstants.deliveredOrderNotificationIcon
-                                : notification.typeof == "5"
-                                    ? IconsAssetsConstants.acceptedOrderNotificationIcon
-                                    : IconsAssetsConstants.notificationDiscountIcon,
-                color: notification.typeof == "1"
-                    ? MainColors.warningColor(context)
-                    : notification.typeof == "2"
-                        ? MainColors.successColor(context)
-                        : notification.typeof == "3"
-                            ? MainColors.errorColor(context)
-                            : notification.typeof == "4"
-                                ? MainColors.successColor(context)
-                                : notification.typeof == "5"
-                                    ? MainColors.successColor(context)
-                                    : MainColors.whiteColor,
-                fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: EdgeInsets.all(15.r),
+                child: NetworkImageComponent(
+                  imageLink: notification.icon ?? '',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             SizedBox(
@@ -112,6 +99,27 @@ class NotificationCardComponent extends StatelessWidget {
                       ),
                     ],
                   ),
+                  if (notification.typeof == "1")
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          IconsAssetsConstants.copyIcon,
+                          width: 22.r,
+                          height: 22.r,
+                          color: MainColors.disableColor(context),
+                        ),
+                        SizedBox(width: 5.w),
+                        Expanded(
+                          child: Text(
+                            notification.data ?? '',
+                            style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                              fontFamily: FontsFamilyAssetsConstants.bold,
+                            ),
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
                   SizedBox(
                     height: 5.h,
                   ),

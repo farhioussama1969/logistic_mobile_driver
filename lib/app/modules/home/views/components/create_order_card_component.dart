@@ -39,6 +39,7 @@ class CreateOrderCardComponent extends StatelessWidget {
                 child: SvgPicture.asset(
                   LogosAssetsConstants.vectorLogo,
                   color: MainColors.whiteColor.withOpacity(0.1),
+                  alignment: Alignment.centerLeft,
                 ),
               ),
               Padding(
@@ -50,7 +51,7 @@ class CreateOrderCardComponent extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             IconsAssetsConstants.orderIcon,
-                            color: MainColors.whiteColor,
+                            //color: MainColors.whiteColor,
                             width: 24.r,
                           ),
                           SizedBox(width: 5.w),
@@ -85,17 +86,16 @@ class CreateOrderCardComponent extends StatelessWidget {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: MainColors.warningColor(context),
+                      gradient: LinearGradient(
+                        colors: [MainColors.warningColor(context)!.withOpacity(0.3), MainColors.warningColor(context)!.withOpacity(0.1)],
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                      ),
                       borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(color: MainColors.textColor(context)!.withOpacity(0.3)),
                     ),
                     child: Stack(
                       children: [
-                        Positioned.fill(
-                          child: SvgPicture.asset(
-                            LogosAssetsConstants.vectorLogo,
-                            color: MainColors.whiteColor.withOpacity(0.1),
-                          ),
-                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                           child: Row(
@@ -104,19 +104,15 @@ class CreateOrderCardComponent extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     SvgPicture.asset(
-                                      IconsAssetsConstants.orderIcon,
-                                      color: MainColors.whiteColor,
+                                      IconsAssetsConstants.orderStartedIcon,
                                       width: 24.r,
+                                      color: MainColors.warningColor(context),
                                     ),
                                     SizedBox(width: 5.w),
                                     if (progress != null)
                                       Center(
-                                        child: Text(
-                                          '${progress ?? 0} ${StringsAssetsConstants.progress}',
-                                          style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                            color: MainColors.whiteColor,
-                                          ),
-                                        ),
+                                        child: Text('${progress ?? 0} ${StringsAssetsConstants.progress}',
+                                            style: TextStyles.mediumLabelTextStyle(context)),
                                       ),
                                     if (progress == null && loading)
                                       LoadingAnimationWidget.staggeredDotsWave(
@@ -139,17 +135,19 @@ class CreateOrderCardComponent extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: MainColors.successColor(context),
+                          gradient: LinearGradient(
+                            colors: [
+                              MainColors.successColor(context)!.withOpacity(0.3),
+                              MainColors.successColor(context)!.withOpacity(0.1)
+                            ],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          ),
                           borderRadius: BorderRadius.circular(15.r),
+                          border: Border.all(color: MainColors.textColor(context)!.withOpacity(0.3)),
                         ),
                         child: Stack(
                           children: [
-                            Positioned.fill(
-                              child: SvgPicture.asset(
-                                LogosAssetsConstants.vectorLogo,
-                                color: MainColors.whiteColor.withOpacity(0.1),
-                              ),
-                            ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                               child: Row(
@@ -158,17 +156,15 @@ class CreateOrderCardComponent extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         SvgPicture.asset(
-                                          IconsAssetsConstants.orderIcon,
-                                          color: MainColors.whiteColor,
+                                          IconsAssetsConstants.orderStartedIcon,
                                           width: 24.r,
+                                          color: MainColors.successColor(context),
                                         ),
                                         SizedBox(width: 5.w),
                                         if (completed != null)
                                           Text(
                                             '${completed ?? 0} ${StringsAssetsConstants.completed}',
-                                            style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                              color: MainColors.whiteColor,
-                                            ),
+                                            style: TextStyles.mediumLabelTextStyle(context),
                                           ),
                                         if (completed == null && loading)
                                           LoadingAnimationWidget.staggeredDotsWave(
@@ -187,17 +183,16 @@ class CreateOrderCardComponent extends StatelessWidget {
                       SizedBox(height: 10.h),
                       Container(
                         decoration: BoxDecoration(
-                          color: MainColors.errorColor(context),
+                          gradient: LinearGradient(
+                            colors: [MainColors.errorColor(context)!.withOpacity(0.3), MainColors.errorColor(context)!.withOpacity(0.1)],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          ),
                           borderRadius: BorderRadius.circular(15.r),
+                          border: Border.all(color: MainColors.textColor(context)!.withOpacity(0.3)),
                         ),
                         child: Stack(
                           children: [
-                            Positioned.fill(
-                              child: SvgPicture.asset(
-                                LogosAssetsConstants.vectorLogo,
-                                color: MainColors.whiteColor.withOpacity(0.1),
-                              ),
-                            ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                               child: Row(
@@ -206,17 +201,15 @@ class CreateOrderCardComponent extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         SvgPicture.asset(
-                                          IconsAssetsConstants.orderIcon,
-                                          color: MainColors.whiteColor,
+                                          IconsAssetsConstants.orderStartedIcon,
                                           width: 24.r,
+                                          color: MainColors.errorColor(context),
                                         ),
                                         SizedBox(width: 5.w),
                                         if (canceled != null)
                                           Text(
                                             '${canceled ?? 0} ${StringsAssetsConstants.canceled}',
-                                            style: TextStyles.mediumLabelTextStyle(context).copyWith(
-                                              color: MainColors.whiteColor,
-                                            ),
+                                            style: TextStyles.mediumLabelTextStyle(context),
                                           ),
                                         if (canceled == null && loading)
                                           LoadingAnimationWidget.staggeredDotsWave(

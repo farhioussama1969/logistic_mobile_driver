@@ -104,7 +104,7 @@ Future<void> main() async {
             transitionDuration: const Duration(milliseconds: 300),
             defaultTransition: Transition.noTransition,
             debugShowCheckedModeBanner: false,
-            title: StringsAssetsConstants.appName,
+            title: 'Loogisti Driver',
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,
             translations: Translation(),

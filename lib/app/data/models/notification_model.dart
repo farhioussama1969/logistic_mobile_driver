@@ -5,8 +5,9 @@ class NotificationModel {
   String? data;
   String? typeof;
   String? createdAt;
+  String? icon;
 
-  NotificationModel({this.id, this.title, this.message, this.data, this.typeof, this.createdAt});
+  NotificationModel({this.id, this.title, this.message, this.data, this.typeof, this.createdAt, this.icon});
 
   NotificationModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -15,6 +16,7 @@ class NotificationModel {
     data = json['data'];
     typeof = json['typeof'];
     createdAt = json['created_at'];
+    icon = json['icon'];
   }
 
   Map<String, dynamic> toJson() {
@@ -25,6 +27,7 @@ class NotificationModel {
     data['data'] = this.data;
     data['typeof'] = this.typeof;
     data['created_at'] = this.createdAt;
+    data['icon'] = this.icon;
     return data;
   }
 }

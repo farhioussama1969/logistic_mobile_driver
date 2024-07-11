@@ -9,7 +9,10 @@ import 'package:flutter_google_maps_webservices/src/core.dart' as googleMapsWebS
 class GeocodingService {
   static Future<String?> getPlaceMarkFromCoordinates(double lat, double lng) async {
     final places = GoogleMapsGeocoding(apiKey: FlutterConfig.get('GOOGLE_MAPS_API_KEY'));
-    GeocodingResponse response = await places.searchByLocation(googleMapsWebServices.Location(lat: lat, lng: lng));
+    GeocodingResponse response = await places.searchByLocation(
+      googleMapsWebServices.Location(lat: lat, lng: lng),
+      language: 'ar_DZ',
+    );
 
     log('error message::: ${response.errorMessage}');
 
@@ -19,7 +22,13 @@ class GeocodingService {
 
     //log('full address json::: ${response.results.first.toJson()}');
 
-    return response.results.first.formattedAddress;
+    List<String>? addressComponents = response.results.first.formattedAddress?.split(',');
+
+    addressComponents?.removeAt(0);
+
+    return addressComponents?.join(',').trim();
+
+    // return '${response.results.first.addressComponents[1].longName}, ${response.results.first.addressComponents[2].longName}, ${response.results.first.addressComponents[3].longName} ,${response.results.first.addressComponents[4].longName}';
   }
 
   static Future<List<PlacesSearchResult>> getPlacesSuggestionsFromText(String searchText) async {

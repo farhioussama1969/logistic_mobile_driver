@@ -90,7 +90,7 @@ class SignInView extends GetView<SignInController> {
                   Padding(
                     padding: EdgeInsets.only(top: 50.h),
                     child: SvgPicture.asset(
-                      ThemeUtil.isDarkMode ? LogosAssetsConstants.fullHorizontalLogoWhite : LogosAssetsConstants.fullHorizontalLogoBlack,
+                      LogosAssetsConstants.fullHorizontalLogoBlack,
                       width: 300.r,
                     ),
                   )

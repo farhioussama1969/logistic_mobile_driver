@@ -162,4 +162,5 @@ static String get getASpecialIncomeWith{return "Get a special income with".tr;}
 static String get youHaveNotReceivedAnyRequestsYetWaitToReceiveRequests{return "You have not received any requests yet Wait to receive requests".tr;}
 static String get accept{return "accept".tr;}
 static String get reject{return "reject".tr;}
+static String get trackPath{return "track path".tr;}
 }

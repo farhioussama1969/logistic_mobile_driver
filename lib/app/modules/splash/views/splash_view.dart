@@ -43,7 +43,7 @@ class SplashView extends GetView<SplashController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset(
-                      ThemeUtil.isDarkMode ? LogosAssetsConstants.fullLogoWhite : LogosAssetsConstants.fullLogoBlack,
+                      LogosAssetsConstants.fullLogoBlack,
                       width: 220.r,
                     ),
                   ],

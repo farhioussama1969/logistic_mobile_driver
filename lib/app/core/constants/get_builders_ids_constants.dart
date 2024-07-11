@@ -32,4 +32,5 @@ class GetBuildersIdsConstants {
   static const String homeAppBar = "home_app_bar";
   static const String orderDetails = "order_details";
   static const String homeNotification = "home_notification";
+  static const String currentUserAddress = "current_user_address";
 }

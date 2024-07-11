@@ -13,6 +13,7 @@ import 'package:loogisti/app/core/components/text/animated_type_text_component.d
 import 'package:loogisti/app/core/constants/fonts_family_assets_constants.dart';
 import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
 import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
+import 'package:loogisti/app/core/services/url_launcher_service.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
 import 'package:loogisti/app/core/utils/color_convertor_util.dart';
@@ -226,80 +227,22 @@ class OrderCardComponent extends StatelessWidget {
                                     //     endIndent: 0.r,
                                     //   ),
                                     // ),
-                                    SvgPicture.asset(
-                                      IconsAssetsConstants.locationIcon,
-                                      width: 18.r,
-                                      color: MainColors.textColor(context),
+                                    GestureDetector(
+                                      onTap: () {
+                                        UrlLauncherService.openLink(
+                                            link:
+                                                'https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=${orderData?.deliveryLocationLate},${orderData?.deliveryLocationLong}');
+                                      },
+                                      child: TagComponent(
+                                        title: StringsAssetsConstants.trackPath,
+                                        iconPath: IconsAssetsConstants.locationIcon,
+                                        iconColor: MainColors.whiteColor,
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                               SizedBox(width: 3.w),
-                              Expanded(
-                                  child: Column(
-                                children: [
-                                  // Column(
-                                  //   children: [
-                                  //     Row(
-                                  //       children: [
-                                  //         Expanded(
-                                  //           child: AnimatedTypeTextComponent(
-                                  //             text: StringsAssetsConstants.pickUpLocation,
-                                  //             textStyle: TextStyles.smallBodyTextStyle(context).copyWith(
-                                  //               color: MainColors.textColor(context)!.withOpacity(0.6),
-                                  //             ),
-                                  //             textAlign: TextAlign.start,
-                                  //           ),
-                                  //         ),
-                                  //       ],
-                                  //     ),
-                                  //     Row(
-                                  //       children: [
-                                  //         Expanded(
-                                  //           child: Text(
-                                  //             'Cairo, Nasr City, 5th Settlement, 90th Street, Building 17, Apartment 17',
-                                  //             style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                  //               fontFamily: FontsFamilyAssetsConstants.bold,
-                                  //             ),
-                                  //             maxLines: 1,
-                                  //             overflow: TextOverflow.ellipsis,
-                                  //           ),
-                                  //         ),
-                                  //       ],
-                                  //     ),
-                                  //   ],
-                                  // ),
-                                  // SizedBox(height: 15.h),
-                                  Column(
-                                    children: [
-                                      // Row(
-                                      //   children: [
-                                      //     Expanded(
-                                      //       child: AnimatedTypeTextComponent(
-                                      //           text: StringsAssetsConstants.deliveryLocation,
-                                      //           textStyle: TextStyles.smallBodyTextStyle(context).copyWith(
-                                      //             color: MainColors.textColor(context)!.withOpacity(0.6),
-                                      //           ),
-                                      //           textAlign: TextAlign.start),
-                                      //     ),
-                                      //   ],
-                                      // ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              orderData?.deliveryName ?? '/',
-                                              style: TextStyles.smallBodyTextStyle(context).copyWith(),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              )),
                             ],
                           ),
                         ),

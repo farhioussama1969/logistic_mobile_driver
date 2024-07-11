@@ -1,6 +1,9 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/constants/get_builders_ids_constants.dart';
 import 'package:loogisti/app/core/services/app_version_info_service.dart';
+import 'package:loogisti/app/core/services/geocoding_service.dart';
+import 'package:loogisti/app/core/services/geolocator_location_service.dart';
 import 'package:loogisti/app/core/utils/translation_util.dart';
 import 'package:loogisti/app/data/models/general_settings_model.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/config_provider.dart';
@@ -15,6 +18,7 @@ class ConfigController extends GetxController {
 
   initialize() async {
     await getPackageVersion();
+    enableAndGetStartingPositionFromGeolocator();
     //await getGeneralSettingsData();
   }
 
@@ -30,6 +34,42 @@ class ConfigController extends GetxController {
   void changeSelectedAppLang(String lang) {
     selectedAppLang = lang;
     update([GetBuildersIdsConstants.profileAppLangWindowList]);
+  }
+
+  String? currentAddress;
+  void changeCurrentAddress(String newCurrentAddress) {
+    currentAddress = newCurrentAddress;
+    update([GetBuildersIdsConstants.currentUserAddress]);
+  }
+
+  Position? selectedPosition;
+
+  Future<void> enableAndGetStartingPositionFromGeolocator() async {
+    Position? newPosition = await GeolocatorLocationService.getCurrentLocation(
+      onLoading: () {},
+      onFinal: () {},
+    );
+    if (newPosition != null) {
+      changeStartingPosition(newPosition);
+    }
+  }
+
+  Future<void> changeStartingPosition(Position? newPosition, {bool? withoutGetPlace}) async {
+    selectedPosition = newPosition;
+    if (newPosition != null) {
+      getAddressFromCoordinates(selectedPosition!.latitude!, selectedPosition!.longitude!);
+    }
+  }
+
+  Future<void> getAddressFromCoordinates(double lat, double lng) async {
+    await GeocodingService.getPlaceMarkFromCoordinates(lat, lng).then((value) {
+      if (value != null) {
+        changeCurrentAddress(value);
+        update([
+          GetBuildersIdsConstants.currentUserAddress,
+        ]);
+      }
+    });
   }
 
   void saveAppLang() {

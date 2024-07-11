@@ -5,9 +5,7 @@ class PaginationModel<Model> {
   PaginationModel({this.data, this.meta});
 
   PaginationModel.fromJson(Map<String, dynamic> json, Function modelFromJson) {
-    if (json['meta'] != null) {
-      meta = Meta.fromJson(json['meta']);
-    }
+    meta = Meta.fromJson(json);
 
     if (json['data'] != null) {
       data = [];

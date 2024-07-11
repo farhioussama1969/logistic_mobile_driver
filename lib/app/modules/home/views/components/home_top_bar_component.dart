@@ -9,6 +9,7 @@ import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
 import 'package:loogisti/app/core/constants/strings_assets_constants.dart';
 import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
+import 'package:loogisti/app/modules/config_controller.dart';
 import 'package:loogisti/app/modules/home/controllers/home_controller.dart';
 import 'package:loogisti/app/modules/user_controller.dart';
 import 'package:loogisti/app/routes/app_pages.dart';
@@ -70,12 +71,18 @@ class HomeTopBarComponent extends StatelessWidget {
                                   '${logic.user?.fullname}',
                                   style: TextStyles.mediumLabelTextStyle(context),
                                 ),
-                                Text(
-                                  'Algeria, ben aknoun',
-                                  style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                    color: MainColors.textColor(context)!.withOpacity(0.6),
-                                  ),
-                                ),
+                                GetBuilder<ConfigController>(
+                                    id: GetBuildersIdsConstants.currentUserAddress,
+                                    builder: (logic) {
+                                      return Text(
+                                        logic.currentAddress ?? '${Get.find<UserController>().user?.email}',
+                                        style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                                          color: MainColors.textColor(context)!.withOpacity(0.6),
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      );
+                                    }),
                               ],
                             ),
                           );

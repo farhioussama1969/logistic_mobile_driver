@@ -27,8 +27,7 @@ class OrderDetailsController extends GetxController {
             })
         .then((value) {
       if (value != null) {
-        Get.find<HomeController>().refreshHome();
-        Get.back();
+        refreshOrder();
         ToastComponent.showSuccessToast(Get.context!, text: StringsAssetsConstants.orderStatusHasBeenUpdatedSuccessfully);
       }
     });
@@ -99,7 +98,7 @@ class OrderDetailsController extends GetxController {
 
   @override
   void onReady() {
-    // const OrderDetailsView().showRatingWindow();
+    //const OrderDetailsView().showRatingWindow();
     super.onReady();
   }
 
