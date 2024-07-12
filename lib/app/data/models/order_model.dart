@@ -29,6 +29,8 @@ class OrderModel {
   String? pcolor;
   String? senderPhone;
   String? reciverPhone;
+  String? action;
+  double? profitCost;
 
   OrderModel({
     this.id,
@@ -56,6 +58,8 @@ class OrderModel {
     this.pcolor,
     this.senderPhone,
     this.reciverPhone,
+    this.action,
+    this.profitCost,
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
@@ -89,6 +93,8 @@ class OrderModel {
     pcolor = json['pcolor'];
     senderPhone = json['sender_phone'];
     reciverPhone = json['reciver_phone'];
+    action = json['action'];
+    profitCost = json['profit_cost'] != null ? double.parse(json['profit_cost'].toString()) : null;
   }
 
   Map<String, dynamic> toJson() {

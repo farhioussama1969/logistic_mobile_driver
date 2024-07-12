@@ -1,3 +1,4 @@
+import 'package:action_slider/action_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/components/pop_ups/toast_component.dart';
@@ -33,35 +34,59 @@ class OrderDetailsController extends GetxController {
     });
   }
 
-  bool orderCommentLoading = false;
-  void orderCommentLoadingChange(bool value) {
-    orderCommentLoading = value;
+  bool orderPaymentLoading = false;
+  void changeOrderPaymentLoading(bool value) {
+    orderPaymentLoading = value;
     update([GetBuildersIdsConstants.orderRating]);
   }
 
-  int? selectedRating;
-  void selectedRatingChange(int value) {
-    selectedRating = value;
+  String? selectedWhoPayed = 'sender';
+  void changeSelectedHwoPayed(String value) {
+    selectedWhoPayed = value;
     update([GetBuildersIdsConstants.orderRating]);
   }
 
-  final TextEditingController commentController = TextEditingController();
+  bool orderPriceChecked = false;
+  void changeOrderPriceChecked(bool value) {
+    orderPriceChecked = value;
+    update([GetBuildersIdsConstants.orderRating]);
+  }
+
+  bool deliveryPriceChecked = false;
+  void changeDeliveryPriceChecked(bool value) {
+    deliveryPriceChecked = value;
+    update([GetBuildersIdsConstants.orderRating]);
+  }
 
   Future<void> orderComment() async {
-    if (orderCommentLoading) return;
+    if (orderPaymentLoading) return;
     await OrderProvider()
-        .orderRating(
+        .orderPayment(
+      type: (orderPriceChecked && deliveryPriceChecked)
+          ? 3
+          : (orderPriceChecked && !deliveryPriceChecked)
+              ? 1
+              : 2,
       orderId: orderData?.id,
-      comment: commentController.text,
-      rating: selectedRating,
-      onLoading: () => orderCommentLoadingChange(true),
-      onFinal: () => orderCommentLoadingChange(false),
+      person: selectedWhoPayed,
+      onLoading: () {
+        changeOrderPaymentLoading(true);
+        actionSliderController.loading();
+      },
+      onFinal: () {
+        changeOrderPaymentLoading(false);
+      },
     )
-        .then((value) {
+        .then((value) async {
       if (value != null) {
+        actionSliderController.success();
         Get.find<HomeController>().refreshHome();
         Get.back();
         Get.back();
+      } else {
+        actionSliderController.failure();
+        await Future.delayed(Duration(seconds: 2));
+        actionSliderController.reset();
       }
     });
   }
@@ -88,6 +113,8 @@ class OrderDetailsController extends GetxController {
     });
   }
 
+  final ActionSliderController actionSliderController = ActionSliderController();
+
   @override
   void onInit() {
     if (Get.arguments != null) {
@@ -98,6 +125,9 @@ class OrderDetailsController extends GetxController {
 
   @override
   void onReady() {
+    if (orderData?.action != 'pay') {
+      const OrderDetailsView().showPaymentWindow();
+    }
     //const OrderDetailsView().showRatingWindow();
     super.onReady();
   }

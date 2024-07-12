@@ -167,6 +167,14 @@
 
 
   "sender": "المرسل",
-  "receiver": "المستلم"
+  "receiver": "المستلم",
+
+  "order cost": "تكلفة الطلب",
+
+  "swipe text": "اسحب لتأكيد الدفع",
+  "who was pay": "من دفع لك المبلغ؟ ",
+
+  "Specify the amount paid": "حدد المبلغ المدفوع"
+
 
 }

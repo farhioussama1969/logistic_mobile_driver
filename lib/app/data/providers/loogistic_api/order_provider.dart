@@ -141,26 +141,26 @@ class OrderProvider {
     return null;
   }
 
-  Future<CommentModel?> orderRating({
+  Future<bool?> orderPayment({
     required int? orderId,
-    required int? rating,
-    required String? comment,
+    required int? type,
+    required String? person,
     required Function onLoading,
     required Function onFinal,
   }) async {
     ApiResponse? response = await HttpClientService.sendRequest(
-      endPoint: EndPointsConstants.commentOrder,
+      endPoint: EndPointsConstants.orderPayment,
       requestType: HttpRequestTypes.post,
       data: {
-        'order_id': orderId.toString(),
-        'type': rating,
-        'content': comment,
+        'oid': orderId.toString(),
+        'type': type,
+        'person': person,
       },
       onLoading: () => onLoading(),
       onFinal: () => onFinal(),
     );
-    if (response?.body != null) {
-      return CommentModel.fromJson(response?.body['comment']);
+    if (response?.statusCode == 200) {
+      return true;
     }
     return null;
   }

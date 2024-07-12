@@ -21,7 +21,7 @@ import 'package:loogisti/app/core/styles/main_colors.dart';
 import 'package:loogisti/app/core/styles/text_styles.dart';
 import 'package:loogisti/app/core/utils/color_convertor_util.dart';
 import 'package:loogisti/app/modules/order_details/views/components/order_statuses_history_section_component.dart';
-import 'package:loogisti/app/modules/order_details/views/components/rating_window_component.dart';
+import 'package:loogisti/app/modules/order_details/views/components/payment_window_component.dart';
 
 import '../controllers/order_details_controller.dart';
 
@@ -288,19 +288,24 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
     );
   }
 
-  void showRatingWindow() {
+  void showPaymentWindow() {
     DialogComponent().show(
       Get.context!,
       body: GetBuilder<OrderDetailsController>(
           id: GetBuildersIdsConstants.orderRating,
           autoRemove: false,
           builder: (logic) {
-            return RatingWindowComponent(
-              commentController: logic.commentController,
-              selectedRating: logic.selectedRating,
-              selectedRatingChange: logic.selectedRatingChange,
-              orderCommentLoading: logic.orderCommentLoading,
+            return PaymentWindowComponent(
               onConfirm: logic.orderComment,
+              isLoading: logic.orderPaymentLoading,
+              selectedPaymentSide: logic.selectedWhoPayed,
+              selectedRatingChange: logic.changeSelectedHwoPayed,
+              orderData: logic.orderData,
+              deliveryPriceChecked: logic.changeDeliveryPriceChecked,
+              orderPriceChecked: logic.changeOrderPriceChecked,
+              isDeliveryPriceChecked: logic.deliveryPriceChecked,
+              isOrderPriceChecked: logic.orderPriceChecked,
+              actionSliderController: logic.actionSliderController,
             );
           }),
     );
