@@ -174,7 +174,10 @@
   "swipe text": "اسحب لتأكيد الدفع",
   "who was pay": "من دفع لك المبلغ؟ ",
 
-  "Specify the amount paid": "حدد المبلغ المدفوع"
+  "Specify the amount paid": "حدد المبلغ المدفوع",
+
+  "shipping location": "موقع الشحن"
+
 
 
 }

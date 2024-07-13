@@ -21,7 +21,7 @@ class OrderStatusCardComponent extends StatelessWidget {
         Container(
           height: 80.r,
           width: 80.r,
-          padding: EdgeInsets.all(10.r),
+          padding: EdgeInsets.all(20.r),
           decoration: BoxDecoration(
             color: orderStatusData.backgroundColor ?? MainColors.inputColor(context),
             borderRadius: BorderRadius.circular(1000.r),
@@ -30,8 +30,9 @@ class OrderStatusCardComponent extends StatelessWidget {
               width: 2.r,
             ),
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(1000.r),
+          child: Container(
+            height: 60.r,
+            width: 60.r,
             child: Center(
               child: NetworkImageComponent(
                 imageLink: '${orderStatusData.icon}',

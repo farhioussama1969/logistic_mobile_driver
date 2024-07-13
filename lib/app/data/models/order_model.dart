@@ -31,6 +31,7 @@ class OrderModel {
   String? reciverPhone;
   String? action;
   double? profitCost;
+  int? routeType;
 
   OrderModel({
     this.id,
@@ -60,6 +61,7 @@ class OrderModel {
     this.reciverPhone,
     this.action,
     this.profitCost,
+    this.routeType,
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
@@ -94,6 +96,7 @@ class OrderModel {
     senderPhone = json['sender_phone'];
     reciverPhone = json['reciver_phone'];
     action = json['action'];
+    routeType = json['route_type'];
     profitCost = json['profit_cost'] != null ? double.parse(json['profit_cost'].toString()) : null;
   }
 

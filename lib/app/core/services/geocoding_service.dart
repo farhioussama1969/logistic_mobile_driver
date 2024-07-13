@@ -26,6 +26,8 @@ class GeocodingService {
 
     addressComponents?.removeAt(0);
 
+    print('geocoding::: {${addressComponents?.join(',').trim()}}');
+
     return addressComponents?.join(',').trim();
 
     // return '${response.results.first.addressComponents[1].longName}, ${response.results.first.addressComponents[2].longName}, ${response.results.first.addressComponents[3].longName} ,${response.results.first.addressComponents[4].longName}';

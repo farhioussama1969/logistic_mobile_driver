@@ -139,6 +139,24 @@ class OrderCardComponent extends StatelessWidget {
                               ],
                             ),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  StringsAssetsConstants.shippingLocation,
+                                  style: TextStyles.smallBodyTextStyle(context).copyWith(
+                                    fontFamily: FontsFamilyAssetsConstants.bold,
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  IconsAssetsConstants.arrowDownIcon,
+                                  width: 18.r,
+                                  color: MainColors.textColor(context),
+                                ),
+                                SizedBox(height: 4.h),
+                              ],
+                            ),
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
@@ -167,7 +185,7 @@ class OrderCardComponent extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 4.h, left: 8.w, right: 8.w, bottom: 10.h),
                                     child: LinearPercentIndicator(
                                       lineHeight: 15.r,
-                                      percent: progress ?? 0,
+                                      percent: progress + (orderData?.routeType == 1 ? 0 : 0.5),
                                       animateFromLastPercent: true,
                                       animation: true,
                                       barRadius: Radius.circular(1000.r),
