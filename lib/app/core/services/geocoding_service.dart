@@ -14,21 +14,19 @@ class GeocodingService {
       language: 'ar_DZ',
     );
 
-    log('error message::: ${response.errorMessage}');
-
-    response.results.first.addressComponents.forEach((element) {
-      log('address component::: ${element.toJson()}');
-    });
+    print('ok ${response.results.first.formattedAddress}');
 
     //log('full address json::: ${response.results.first.toJson()}');
 
-    List<String>? addressComponents = response.results.first.formattedAddress?.split(',');
+    List<String>? addressComponents = response.results.first.formattedAddress?.split(' ');
+
+    print('ok ${addressComponents?.length}');
 
     addressComponents?.removeAt(0);
 
-    print('geocoding::: {${addressComponents?.join(',').trim()}}');
+    print('geocoding::: {${addressComponents?.join(' ').trim()}}');
 
-    return addressComponents?.join(',').trim();
+    return addressComponents?.join(' ').trim();
 
     // return '${response.results.first.addressComponents[1].longName}, ${response.results.first.addressComponents[2].longName}, ${response.results.first.addressComponents[3].longName} ,${response.results.first.addressComponents[4].longName}';
   }
