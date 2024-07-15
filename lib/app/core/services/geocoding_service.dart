@@ -20,13 +20,27 @@ class GeocodingService {
 
     List<String>? addressComponents = response.results.first.formattedAddress?.split(' ');
 
-    print('ok ${addressComponents?.length}');
+    List<String> geocodingComponents = [];
+
+    response.results.first.addressComponents.forEach((element) {
+      print('addressComponents::: ${element.toJson()}');
+
+      if ((element.types.contains('locality') && element.types.contains('political')) ||
+          element.types.contains('administrative_area_level_2') ||
+          element.types.contains('administrative_area_level_1')) {
+        geocodingComponents.add(element.longName!);
+      }
+    });
+
+    print('ok ${response.results.first.toJson()}');
 
     addressComponents?.removeAt(0);
 
     print('geocoding::: {${addressComponents?.join(' ').trim()}}');
 
-    return addressComponents?.join(' ').trim();
+    //return addressComponents?.join(' ').trim();
+
+    return geocodingComponents.join(' ,');
 
     // return '${response.results.first.addressComponents[1].longName}, ${response.results.first.addressComponents[2].longName}, ${response.results.first.addressComponents[3].longName} ,${response.results.first.addressComponents[4].longName}';
   }
