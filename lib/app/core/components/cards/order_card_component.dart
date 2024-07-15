@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,8 +33,12 @@ class OrderCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double? progress = orderData?.currentDistance == null ? 0 : (orderData!.currentDistance! / orderData!.distance!);
-
+    double? progress = min(
+            orderData?.currentDistance == null
+                ? 0
+                : (orderData!.currentDistance! / ((orderData?.distance == null || orderData?.distance == 0) ? 1 : (orderData!.distance!))),
+            0.5) +
+        (orderData?.routeType == 1 ? 0 : 0.5);
     return orderData != null
         ? GestureDetector(
             onTap: () {
@@ -185,7 +191,7 @@ class OrderCardComponent extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 4.h, left: 8.w, right: 8.w, bottom: 10.h),
                                     child: LinearPercentIndicator(
                                       lineHeight: 15.r,
-                                      percent: progress + (orderData?.routeType == 1 ? 0 : 0.5),
+                                      percent: progress,
                                       animateFromLastPercent: true,
                                       animation: true,
                                       barRadius: Radius.circular(1000.r),
