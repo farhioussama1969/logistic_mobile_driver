@@ -39,6 +39,8 @@ class OrderCardComponent extends StatelessWidget {
                 : (orderData!.currentDistance! / ((orderData?.distance == null || orderData?.distance == 0) ? 1 : (orderData!.distance!))),
             0.5) +
         (orderData?.routeType == 1 ? 0 : 0.5);
+
+    print('progress::: ${progress}');
     return orderData != null
         ? GestureDetector(
             onTap: () {
@@ -188,22 +190,21 @@ class OrderCardComponent extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 4.h, left: 8.w, right: 8.w, bottom: 10.h),
-                                    child: LinearPercentIndicator(
-                                      lineHeight: 15.r,
-                                      percent: progress,
-                                      animateFromLastPercent: true,
-                                      animation: true,
-                                      barRadius: Radius.circular(1000.r),
-                                      backgroundColor: MainColors.disableColor(context)!.withOpacity(0.25),
-                                      progressColor:
-                                          ColorConvertorUtil().stringColorCodeToColor(orderData?.pcolor) ?? MainColors.primaryColor,
-                                      animationDuration: 300,
-                                      restartAnimation: false,
-                                      isRTL: Get.locale?.languageCode == 'ar',
-                                      padding: EdgeInsets.zero,
-                                    ),
-                                  ),
+                                      padding: EdgeInsets.only(top: 4.h, left: 8.w, right: 8.w, bottom: 10.h),
+                                      child: LinearPercentIndicator(
+                                        lineHeight: 15.r,
+                                        percent: progress,
+                                        animateFromLastPercent: true,
+                                        animation: true,
+                                        barRadius: Radius.circular(1000.r),
+                                        backgroundColor: MainColors.disableColor(context)!.withOpacity(0.25),
+                                        progressColor:
+                                            ColorConvertorUtil().stringColorCodeToColor(orderData?.pcolor) ?? MainColors.primaryColor,
+                                        animationDuration: 300,
+                                        restartAnimation: false,
+                                        isRTL: Get.locale?.languageCode == 'ar',
+                                        padding: EdgeInsets.zero,
+                                      )),
                                 ),
                               ],
                             ),
@@ -299,7 +300,8 @@ class OrderCardComponent extends StatelessWidget {
                                     ),
                                   ),
                                   TextSpan(
-                                    text: '${(orderData?.distance ?? 0) - (orderData?.currentDistance ?? 0)} ${StringsAssetsConstants.km}',
+                                    text:
+                                        '${((orderData?.distance ?? 0) - (orderData?.currentDistance ?? 0)).floor()} ${StringsAssetsConstants.km}',
                                     style: TextStyles.smallBodyTextStyle(context).copyWith(
                                       color: MainColors.primaryColor,
                                       fontFamily: FontsFamilyAssetsConstants.bold,
@@ -372,7 +374,7 @@ class OrderCardComponent extends StatelessWidget {
                               style: TextStyles.smallLabelTextStyle(context),
                             ),
                             Text(
-                              '${((orderData?.price ?? 0) + (orderData?.deleveryNewCost ?? 0)).floor()} ${StringsAssetsConstants.currency}',
+                              '${((orderData?.totaleCost ?? 0) + (orderData?.deleveryCost ?? 0)).floor()} ${StringsAssetsConstants.currency}',
                               style: TextStyles.smallLabelTextStyle(context).copyWith(
                                 color: MainColors.primaryColor,
                               ),

@@ -98,6 +98,8 @@ class OrderModel {
     action = json['action'];
     routeType = json['route_type'];
     profitCost = json['profit_cost'] != null ? double.parse(json['profit_cost'].toString()) : null;
+    currentDistance = json['current_distance'] != null ? double.parse(json['current_distance'].toString()) : null;
+    distance = json['distance'] != null ? double.parse(json['distance'].toString()) : null;
   }
 
   Map<String, dynamic> toJson() {

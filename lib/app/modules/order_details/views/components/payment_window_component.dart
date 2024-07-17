@@ -87,7 +87,7 @@ class PaymentWindowComponent extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          StringsAssetsConstants.orderCost,
+                          StringsAssetsConstants.productPrice,
                           style: TextStyles.mediumBodyTextStyle(context).copyWith(
                             decoration: TextDecoration.none,
                           ),

@@ -170,4 +170,5 @@ static String get swipeText{return "swipe text".tr;}
 static String get whoWasPay{return "who was pay".tr;}
 static String get specifyTheAmountPaid{return "Specify the amount paid".tr;}
 static String get shippingLocation{return "shipping location".tr;}
+static String get productPrice{return "product price".tr;}
 }

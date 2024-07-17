@@ -6,10 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/components/animations/animator_component.dart';
 import 'package:loogisti/app/core/components/animations/loading_component.dart';
+import 'package:loogisti/app/core/components/buttons/primary_button_component.dart';
 import 'package:loogisti/app/core/components/cards/order_card_component.dart';
 import 'package:loogisti/app/core/components/cards/tag_component.dart';
 import 'package:loogisti/app/core/components/images/network_image_component.dart';
 import 'package:loogisti/app/core/components/others/header_component.dart';
+import 'package:loogisti/app/core/components/pop_ups/bottom_sheet_component.dart';
 import 'package:loogisti/app/core/components/pop_ups/dialog_component.dart';
 import 'package:loogisti/app/core/components/text/animated_type_text_component.dart';
 import 'package:loogisti/app/core/constants/fonts_family_assets_constants.dart';
@@ -225,6 +227,9 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                           child: InkWell(
                                             onTap: () {
                                               controller.changeOrderStatus(i);
+                                              if (controller.orderData?.orderComponent?.buttons?[i].isCallAction == 'true') {
+                                                showCallWindow();
+                                              }
                                             },
                                             child: TagComponent(
                                               title: '',
@@ -308,6 +313,41 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
               actionSliderController: logic.actionSliderController,
             );
           }),
+    );
+  }
+
+  void showCallWindow() {
+    BottomSheetComponent.show(
+      Get.context!,
+      body: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+        decoration: BoxDecoration(
+          color: MainColors.backgroundColor(Get.context!),
+          borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(20.r)),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: PrimaryButtonComponent(
+                text: StringsAssetsConstants.sender,
+                onTap: () {
+                  UrlLauncherService.callPhone(phoneNUmber: '${controller.orderData?.senderPhone}');
+                },
+              ),
+            ),
+            SizedBox(width: 10.w),
+            Expanded(
+              child: PrimaryButtonComponent(
+                text: StringsAssetsConstants.receiver,
+                onTap: () {
+                  UrlLauncherService.callPhone(phoneNUmber: '${controller.orderData?.reciverPhone}');
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

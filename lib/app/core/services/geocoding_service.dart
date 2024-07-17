@@ -26,7 +26,6 @@ class GeocodingService {
       print('addressComponents::: ${element.toJson()}');
 
       if ((element.types.contains('locality') && element.types.contains('political')) ||
-          element.types.contains('administrative_area_level_2') ||
           element.types.contains('administrative_area_level_1')) {
         geocodingComponents.add(element.longName!);
       }

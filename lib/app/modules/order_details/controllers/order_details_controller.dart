@@ -109,6 +109,9 @@ class OrderDetailsController extends GetxController {
       if (value != null) {
         orderData = value;
         update([GetBuildersIdsConstants.orderDetails]);
+        if (orderData?.action == 'pay') {
+          const OrderDetailsView().showPaymentWindow();
+        }
       }
     });
   }

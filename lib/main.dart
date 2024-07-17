@@ -56,6 +56,7 @@ Future<void> requestAndRegisterNotification() async {
         LocalStorageService.saveData(key: StorageKeysConstants.newNotification, type: DataTypes.bool, value: true);
         if (Get.isRegistered<HomeController>()) {
           Get.find<HomeController>().changeIsThereIsANewNotification(true);
+          Get.find<HomeController>().refreshHome();
         }
       },
     );
