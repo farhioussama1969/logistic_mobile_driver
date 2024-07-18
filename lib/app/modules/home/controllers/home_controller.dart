@@ -7,6 +7,7 @@ import 'package:loogisti/app/core/services/local_storage_service.dart';
 import 'package:loogisti/app/data/models/home_orders_model.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/auth_provider.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/order_provider.dart';
+import 'package:loogisti/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   bool isNoticed = true;
@@ -114,6 +115,7 @@ class HomeController extends GetxController {
           .then(
         (value) {
           if (value != null) {
+            Get.toNamed(Routes.ORDER_DETAILS, arguments: {'order': homeOrdersData?.orders?.data?[index], 'refresh': true});
             refreshHome();
           }
         },

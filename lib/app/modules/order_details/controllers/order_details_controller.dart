@@ -131,6 +131,9 @@ class OrderDetailsController extends GetxController {
     if (orderData?.action == 'pay') {
       const OrderDetailsView().showPaymentWindow();
     }
+    if (Get.arguments['refresh'] == true) {
+      refreshOrder();
+    }
     //const OrderDetailsView().showRatingWindow();
     super.onReady();
   }
