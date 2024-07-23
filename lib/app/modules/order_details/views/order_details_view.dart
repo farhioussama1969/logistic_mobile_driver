@@ -238,15 +238,16 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                               titleWidget: controller.orderData?.orderComponent?.buttons?[i].isLoading != true
                                                   ? Row(
                                                       children: [
-                                                        SizedBox(
-                                                          width: 25.r,
-                                                          height: 25.r,
-                                                          child: NetworkImageComponent(
-                                                            imageLink: '${controller.orderData?.orderComponent?.buttons?[i].icon}',
-                                                            fit: BoxFit.contain,
-                                                            loadingWidget: const SizedBox.shrink(),
+                                                        if (controller.orderData?.orderComponent?.buttons?[i].icon != null)
+                                                          SizedBox(
+                                                            width: 25.r,
+                                                            height: 25.r,
+                                                            child: NetworkImageComponent(
+                                                              imageLink: '${controller.orderData?.orderComponent?.buttons?[i].icon}',
+                                                              fit: BoxFit.contain,
+                                                              loadingWidget: const SizedBox.shrink(),
+                                                            ),
                                                           ),
-                                                        ),
                                                         SizedBox(width: 5.w),
                                                         Text(
                                                           controller.orderData?.orderComponent?.buttons?[i].text ?? '',
