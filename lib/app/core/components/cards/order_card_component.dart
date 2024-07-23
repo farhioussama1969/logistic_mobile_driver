@@ -374,7 +374,7 @@ class OrderCardComponent extends StatelessWidget {
                               style: TextStyles.smallLabelTextStyle(context),
                             ),
                             Text(
-                              '${((orderData?.totaleCost ?? 0) + (orderData?.deleveryCost ?? 0)).floor()} ${StringsAssetsConstants.currency}',
+                              '${((orderData?.totaleCost ?? 0).floor())} ${StringsAssetsConstants.currency}',
                               style: TextStyles.smallLabelTextStyle(context).copyWith(
                                 color: MainColors.primaryColor,
                               ),
