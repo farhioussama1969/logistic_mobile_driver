@@ -29,11 +29,18 @@ class OrderDetailsController extends GetxController {
         .then((value) {
       if (value != null) {
         if (value.isDone == false) {
-          ToastComponent.showErrorToast(Get.context!,
-              text: '${StringsAssetsConstants.youCanOnlyCancelTheOrderAfter} ${value.time} ${StringsAssetsConstants.min}');
+          ToastComponent.showErrorToast(
+            Get.context!,
+            text: '${StringsAssetsConstants.youCanOnlyCancelTheOrderAfter} ${value.time} ${StringsAssetsConstants.min}',
+            position: SnackPosition.TOP,
+          );
         } else {
           refreshOrder();
-          ToastComponent.showSuccessToast(Get.context!, text: StringsAssetsConstants.orderStatusHasBeenUpdatedSuccessfully);
+          ToastComponent.showSuccessToast(
+            Get.context!,
+            text: StringsAssetsConstants.orderStatusHasBeenUpdatedSuccessfully,
+            position: SnackPosition.TOP,
+          );
         }
       }
     });

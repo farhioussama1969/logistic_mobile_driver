@@ -10,12 +10,12 @@ import 'package:loogisti/app/core/styles/text_styles.dart';
 import '../../constants/icons_assets_constants.dart';
 
 class ToastComponent {
-  static void showSuccessToast(BuildContext context, {required String text}) {
+  static void showSuccessToast(BuildContext context, {required String text, SnackPosition? position}) {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         '',
         '',
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: position ?? SnackPosition.BOTTOM,
         borderRadius: 12.r,
         margin: EdgeInsets.all(10.r),
         duration: const Duration(milliseconds: 2000),
@@ -68,12 +68,12 @@ class ToastComponent {
     }
   }
 
-  static void showErrorToast(BuildContext context, {required String text}) {
+  static void showErrorToast(BuildContext context, {required String text, SnackPosition? position}) {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         '',
         '',
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: position ?? SnackPosition.BOTTOM,
         borderRadius: 12.r,
         margin: EdgeInsets.all(10.r),
         duration: const Duration(milliseconds: 2000),
@@ -126,7 +126,7 @@ class ToastComponent {
     }
   }
 
-  static void showInfoToast(BuildContext context, {required String text, String? title}) {
+  static void showInfoToast(BuildContext context, {required String text, String? title, SnackPosition? position}) {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         '',
