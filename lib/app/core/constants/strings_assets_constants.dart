@@ -172,4 +172,10 @@ static String get specifyTheAmountPaid{return "Specify the amount paid".tr;}
 static String get shippingLocation{return "shipping location".tr;}
 static String get productPrice{return "product price".tr;}
 static String get youCanOnlyCancelTheOrderAfter{return "you can only cancel the order after".tr;}
+static String get carType{return "car type".tr;}
+static String get licenseExpiryDate{return "license expiry date".tr;}
+static String get blackCard{return "black card".tr;}
+static String get registerNumber{return "register number".tr;}
+static String get nextInspectionDate{return "next inspection date".tr;}
+static String get insuranceExpiryDate{return "insurance expiry date".tr;}
 }

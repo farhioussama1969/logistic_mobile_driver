@@ -62,25 +62,27 @@ class AuthProvider {
   Future<UserModel?> updateUserData({
     required String fullName,
     required String phoneNumber,
-    required String gender,
+    String? carType,
+    String? licenseExpiryDate,
+    String? blackCard,
+    String? registerNumber,
+    String? nextInspectionDate,
+    String? insuranceExpiryDate,
     File? avatarFile,
     Function? onLoading,
     Function? onFinal,
   }) async {
-    log('${{
-      "fullname": fullName,
-      "gender": gender,
-      "phone": phoneNumber,
-      if (avatarFile != null)
-        "photo": avatarFile == null ? null : await dio.MultipartFile.fromFile(avatarFile.path, filename: avatarFile.path.split('/').last),
-    }}');
-
     ApiResponse? response = await HttpClientService.sendRequest(
       endPoint: EndPointsConstants.updateUserData,
       requestType: HttpRequestTypes.post,
       data: dio.FormData.fromMap({
         "fullname": fullName,
-        "gender": gender,
+        "type_car": carType,
+        "license_expiry_date": licenseExpiryDate,
+        "black_card": blackCard,
+        "register_number": registerNumber,
+        "next_inspection_date": nextInspectionDate,
+        "insurance_expiry_date": insuranceExpiryDate,
         "phone": phoneNumber,
         if (avatarFile != null)
           "photo": avatarFile == null ? null : await dio.MultipartFile.fromFile(avatarFile.path, filename: avatarFile.path.split('/').last),

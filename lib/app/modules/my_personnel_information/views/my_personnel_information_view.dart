@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/components/buttons/primary_button_component.dart';
+import 'package:loogisti/app/core/components/inputs/date_input_component.dart';
 import 'package:loogisti/app/core/components/inputs/text_input_component.dart';
 import 'package:loogisti/app/core/components/layouts/scrollable_body_component.dart';
 import 'package:loogisti/app/core/components/others/header_component.dart';
@@ -70,13 +71,91 @@ class MyPersonnelInformationView extends GetView<MyPersonnelInformationControlle
                   TextInputComponent(
                     focusNode: controller.phoneNumberFocusNode,
                     controller: controller.phoneNumberController,
-                    nextNode: controller.ganderFocusNode,
+                    nextNode: controller.carTypeFocusNode,
                     label: StringsAssetsConstants.phoneNumber,
                     isLabelOutside: true,
                     borderColor: MainColors.textColor(context),
                     hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.phoneNumber}...',
                     validate: (value) => ValidatorUtil.phoneValidation(value,
                         customMessage: '${StringsAssetsConstants.check} ${StringsAssetsConstants.phoneNumber}'),
+                  ),
+                  SizedBox(height: 15.h),
+                  TextInputComponent(
+                    focusNode: controller.carTypeFocusNode,
+                    controller: controller.carTypeController,
+                    nextNode: controller.licenseExpiryDateFocusNode,
+                    label: StringsAssetsConstants.carType,
+                    isLabelOutside: true,
+                    borderColor: MainColors.textColor(context),
+                    hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.carType}...',
+                  ),
+                  SizedBox(height: 15.h),
+                  GetBuilder<MyPersonnelInformationController>(
+                    id: GetBuildersIdsConstants.myPersonnelInformationDates,
+                    builder: (logic) {
+                      return DateInputComponent(
+                        focusNode: controller.licenseExpiryDateFocusNode,
+                        textController: controller.licenseExpiryDateController,
+                        nextNode: controller.blackCardFocusNode,
+                        borderColor: MainColors.textColor(context),
+                        label: StringsAssetsConstants.licenseExpiryDate,
+                        hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.licenseExpiryDate}...',
+                        selectedDate: controller.licenseExpiryDate,
+                        callBack: (date) => controller.setLicenseExpiryDate(date),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 15.h),
+                  TextInputComponent(
+                    focusNode: controller.blackCardFocusNode,
+                    controller: controller.blackCardController,
+                    nextNode: controller.registerNumberFocusNode,
+                    label: StringsAssetsConstants.blackCard,
+                    isLabelOutside: true,
+                    borderColor: MainColors.textColor(context),
+                    hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.blackCard}...',
+                  ),
+                  SizedBox(height: 15.h),
+                  TextInputComponent(
+                    focusNode: controller.registerNumberFocusNode,
+                    controller: controller.registerNumberController,
+                    nextNode: controller.nextInspectionDateFocusNode,
+                    label: StringsAssetsConstants.registerNumber,
+                    isLabelOutside: true,
+                    borderColor: MainColors.textColor(context),
+                    hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.registerNumber}...',
+                  ),
+                  SizedBox(height: 15.h),
+                  GetBuilder<MyPersonnelInformationController>(
+                    id: GetBuildersIdsConstants.myPersonnelInformationDates,
+                    builder: (logic) {
+                      return DateInputComponent(
+                        focusNode: controller.nextInspectionDateFocusNode,
+                        textController: controller.nextInspectionDateController,
+                        nextNode: controller.insuranceExpiryDateFocusNode,
+                        borderColor: MainColors.textColor(context),
+                        label: StringsAssetsConstants.nextInspectionDate,
+                        hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.nextInspectionDate}...',
+                        selectedDate: controller.nextInspectionDate,
+                        callBack: (date) => controller.setNextInspectionDate(date),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 15.h),
+                  GetBuilder<MyPersonnelInformationController>(
+                    id: GetBuildersIdsConstants.myPersonnelInformationDates,
+                    builder: (logic) {
+                      return DateInputComponent(
+                        focusNode: controller.insuranceExpiryDateFocusNode,
+                        textController: controller.insuranceExpiryDateController,
+                        nextNode: controller.insuranceExpiryDateFocusNode,
+                        borderColor: MainColors.textColor(context),
+                        label: StringsAssetsConstants.insuranceExpiryDate,
+                        hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.insuranceExpiryDate}...',
+                        selectedDate: controller.insuranceExpiryDate,
+                        callBack: (date) => controller.setInsuranceExpiryDate(date),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -97,21 +176,6 @@ class MyPersonnelInformationView extends GetView<MyPersonnelInformationControlle
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void showGanderSelectorWindow() {
-    BottomSheetComponent.show(
-      Get.context!,
-      body: GetBuilder<MyPersonnelInformationController>(
-        id: GetBuildersIdsConstants.profileGanderWindow,
-        builder: (logic) {
-          return GanderSelectorWindowComponent(
-            selectedGander: logic.selectedGander,
-            onSelectGander: (gander) => logic.changeSelectedGander(gander),
-          );
-        },
       ),
     );
   }

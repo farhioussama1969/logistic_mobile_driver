@@ -15,11 +15,39 @@ class MyPersonnelInformationController extends GetxController {
 
   final FocusNode fullNameFocusNode = FocusNode();
   final FocusNode phoneNumberFocusNode = FocusNode();
-  final FocusNode ganderFocusNode = FocusNode();
+  final FocusNode carTypeFocusNode = FocusNode();
+  final FocusNode licenseExpiryDateFocusNode = FocusNode();
+  final FocusNode blackCardFocusNode = FocusNode();
+  final FocusNode registerNumberFocusNode = FocusNode();
+  final FocusNode nextInspectionDateFocusNode = FocusNode();
+  final FocusNode insuranceExpiryDateFocusNode = FocusNode();
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
-  final TextEditingController ganderController = TextEditingController();
+  final TextEditingController carTypeController = TextEditingController();
+  final TextEditingController licenseExpiryDateController = TextEditingController();
+  final TextEditingController blackCardController = TextEditingController();
+  final TextEditingController registerNumberController = TextEditingController();
+  final TextEditingController nextInspectionDateController = TextEditingController();
+  final TextEditingController insuranceExpiryDateController = TextEditingController();
+
+  DateTime? licenseExpiryDate;
+  void setLicenseExpiryDate(DateTime? value) {
+    licenseExpiryDate = value;
+    update([GetBuildersIdsConstants.myPersonnelInformationDates]);
+  }
+
+  DateTime? nextInspectionDate;
+  void setInsuranceExpiryDate(DateTime? value) {
+    nextInspectionDate = value;
+    update([GetBuildersIdsConstants.myPersonnelInformationDates]);
+  }
+
+  DateTime? insuranceExpiryDate;
+  void setNextInspectionDate(DateTime? value) {
+    insuranceExpiryDate = value;
+    update([GetBuildersIdsConstants.myPersonnelInformationDates]);
+  }
 
   bool updateMyPersonnelInformationLoading = false;
   void changeUpdateMyPersonnelInformationLoading(bool value) {
@@ -33,19 +61,15 @@ class MyPersonnelInformationController extends GetxController {
     update([GetBuildersIdsConstants.myPersonnelInformationAvatar]);
   }
 
-  GanderType? selectedGander;
-  void changeSelectedGander(GanderType gander) {
-    selectedGander = gander;
-    ganderController.text = (gander == GanderType.male) ? StringsAssetsConstants.male : StringsAssetsConstants.female;
-    update([GetBuildersIdsConstants.profileGanderWindow]);
-  }
-
   void fillUserDetails() {
     fullNameController.text = Get.find<UserController>().user?.fullname ?? '';
     phoneNumberController.text = Get.find<UserController>().user?.phone ?? '';
-    if (Get.find<UserController>().user?.gender == 'male' || Get.find<UserController>().user?.gender == 'female') {
-      changeSelectedGander(Get.find<UserController>().user?.gender == 'male' ? GanderType.male : GanderType.female);
-    }
+    carTypeController.text = Get.find<UserController>().user?.typeCar ?? '';
+    licenseExpiryDateController.text = Get.find<UserController>().user?.licenseExpiryDate ?? '';
+    blackCardController.text = Get.find<UserController>().user?.blackCard ?? '';
+    registerNumberController.text = Get.find<UserController>().user?.registerNumber ?? '';
+    nextInspectionDateController.text = Get.find<UserController>().user?.nextInspectionDate ?? '';
+    insuranceExpiryDateController.text = Get.find<UserController>().user?.insuranceExpiryDate ?? '';
   }
 
   void updateUserData() {
@@ -57,7 +81,12 @@ class MyPersonnelInformationController extends GetxController {
         .updateUserData(
       fullName: fullNameController.text,
       phoneNumber: phoneNumberController.text,
-      gender: selectedGander == GanderType.male ? 'male' : 'female',
+      blackCard: blackCardController.text,
+      carType: carTypeController.text,
+      insuranceExpiryDate: insuranceExpiryDateController.text,
+      licenseExpiryDate: licenseExpiryDateController.text,
+      nextInspectionDate: nextInspectionDateController.text,
+      registerNumber: registerNumberController.text,
       avatarFile: avatarFile,
       onLoading: () => changeUpdateMyPersonnelInformationLoading(true),
       onFinal: () => changeUpdateMyPersonnelInformationLoading(false),

@@ -27,6 +27,8 @@ class DateInputComponent extends StatelessWidget {
   Function(String value)? validate;
   EdgeInsetsGeometry? contentPadding;
   String? hint;
+  Color? borderColor;
+  Color? fillColor;
 
   DateInputComponent(
       {this.child,
@@ -46,6 +48,9 @@ class DateInputComponent extends StatelessWidget {
       this.isLabelOutside,
       this.label,
       this.validate,
+      this.contentPadding,
+      this.borderColor,
+      this.fillColor,
       Key? key})
       : super(key: key);
 
@@ -83,8 +88,24 @@ class DateInputComponent extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.grey,
-                  validator: (value) => validate!(value!),
+                  validator: (value) {
+                    if (validate == null) return null;
+                    return validate!(value!);
+                  },
                   decoration: InputDecoration(
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    label: label == null
+                        ? null
+                        : Text(
+                            label!,
+                            style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                              color: MainColors.textColor(context),
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                    labelStyle: TextStyles.mediumBodyTextStyle(context).copyWith(
+                      color: MainColors.textColor(context),
+                    ),
                     counterText: '',
                     hintStyle: TextStyles.mediumBodyTextStyle(context).copyWith(
                       color: MainColors.disableColor(context),
@@ -96,7 +117,7 @@ class DateInputComponent extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                     errorMaxLines: 2,
-                    fillColor: MainColors.inputColor(context),
+                    fillColor: fillColor ?? MainColors.inputColor(context),
                     filled: filled ?? true,
                     hintText: hint ?? "",
                     errorBorder: OutlineInputBorder(
@@ -109,14 +130,14 @@ class DateInputComponent extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
                       borderSide: BorderSide(
-                        color: MainColors.transparentColor,
+                        color: borderColor ?? MainColors.disableColor(context)!.withOpacity(0.2),
                         width: 1,
                       ),
                     ),
                     disabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
                       borderSide: BorderSide(
-                        color: MainColors.disableColor(context)!.withOpacity(0.2),
+                        color: borderColor ?? MainColors.disableColor(context)!.withOpacity(0.2),
                         width: 1,
                       ),
                     ),
@@ -130,7 +151,7 @@ class DateInputComponent extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
                       borderSide: BorderSide(
-                        color: MainColors.transparentColor,
+                        color: borderColor ?? MainColors.disableColor(context)!.withOpacity(0.2),
                         width: 1,
                       ),
                     ),

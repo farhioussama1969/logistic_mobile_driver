@@ -198,7 +198,16 @@
 
   "product price": "Product price",
 
-  "you can only cancel the order after": "You can only cancel the order after"
+  "you can only cancel the order after": "You can only cancel the order after",
+
+
+  "car type": "Car type",
+  "license expiry date" : "License expiry date",
+    "black card": "Black card",
+  "register number": "Register number",
+  "next inspection date": "Next inspection date",
+  "insurance expiry date": "Insurance expiry date"
+
 
 
 

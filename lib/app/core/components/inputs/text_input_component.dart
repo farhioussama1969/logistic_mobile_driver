@@ -96,7 +96,10 @@ class TextInputComponent extends StatelessWidget {
             child: TextFormField(
               textAlign: ltrDirection == true ? TextAlign.end : TextAlign.start,
               maxLength: maxLength,
-              validator: (value) => validate!(value!),
+              validator: (value) {
+                if (validate == null) return null;
+                return validate!(value!);
+              },
               maxLines: maxLines ?? 1,
               onTap: onTap == null ? null : () => onTap!(context),
               readOnly: readOnly ?? false,
