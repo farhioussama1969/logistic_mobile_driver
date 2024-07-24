@@ -171,4 +171,5 @@ static String get whoWasPay{return "who was pay".tr;}
 static String get specifyTheAmountPaid{return "Specify the amount paid".tr;}
 static String get shippingLocation{return "shipping location".tr;}
 static String get productPrice{return "product price".tr;}
+static String get youCanOnlyCancelTheOrderAfter{return "you can only cancel the order after".tr;}
 }

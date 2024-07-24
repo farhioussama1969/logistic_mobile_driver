@@ -4,8 +4,10 @@ class ActionStatusModel {
   String? updatedAt;
   String? createdAt;
   int? id;
+  bool? isDone;
+  int? time;
 
-  ActionStatusModel({this.orderId, this.statusId, this.updatedAt, this.createdAt, this.id});
+  ActionStatusModel({this.orderId, this.statusId, this.updatedAt, this.createdAt, this.id, this.isDone, this.time});
 
   ActionStatusModel.fromJson(Map<String, dynamic> json) {
     orderId = json['order_id'];
@@ -13,6 +15,8 @@ class ActionStatusModel {
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
     id = json['id'];
+    isDone = json['isDone'];
+    time = json['time'];
   }
 
   Map<String, dynamic> toJson() {
