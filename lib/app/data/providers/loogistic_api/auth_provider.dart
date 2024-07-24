@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 
@@ -66,6 +67,14 @@ class AuthProvider {
     Function? onLoading,
     Function? onFinal,
   }) async {
+    log('${{
+      "fullname": fullName,
+      "gender": gender,
+      "phone": phoneNumber,
+      if (avatarFile != null)
+        "photo": avatarFile == null ? null : await dio.MultipartFile.fromFile(avatarFile.path, filename: avatarFile.path.split('/').last),
+    }}');
+
     ApiResponse? response = await HttpClientService.sendRequest(
       endPoint: EndPointsConstants.updateUserData,
       requestType: HttpRequestTypes.post,
@@ -73,7 +82,7 @@ class AuthProvider {
         "fullname": fullName,
         "gender": gender,
         "phone": phoneNumber,
-        if (avatarFile == null)
+        if (avatarFile != null)
           "photo": avatarFile == null ? null : await dio.MultipartFile.fromFile(avatarFile.path, filename: avatarFile.path.split('/').last),
       }),
       onLoading: () {
