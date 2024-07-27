@@ -365,6 +365,28 @@ class OrderCardComponent extends StatelessWidget {
                             ),
                           ],
                         ),
+                        if (orderData?.bestTimeDelevery != null) SizedBox(height: 4.h),
+                        if (orderData?.bestTimeDelevery != null)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '${StringsAssetsConstants.specificTime}:',
+                                style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                                  color: MainColors.textColor(context)!.withOpacity(0.6),
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                              Text(
+                                '${orderData?.bestTimeDelevery ?? '/'}',
+                                style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                                  color: MainColors.primaryColor,
+                                  fontFamily: FontsFamilyAssetsConstants.bold,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ],
+                          ),
                         SizedBox(height: 4.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

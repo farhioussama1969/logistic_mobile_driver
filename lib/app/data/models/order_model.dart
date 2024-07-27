@@ -32,6 +32,7 @@ class OrderModel {
   String? action;
   double? profitCost;
   int? routeType;
+  String? bestTimeDelevery;
 
   OrderModel({
     this.id,
@@ -62,6 +63,7 @@ class OrderModel {
     this.action,
     this.profitCost,
     this.routeType,
+    this.bestTimeDelevery,
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
@@ -100,6 +102,7 @@ class OrderModel {
     profitCost = json['profit_cost'] != null ? double.parse(json['profit_cost'].toString()) : null;
     currentDistance = json['current_distance'] != null ? double.parse(json['current_distance'].toString()) : null;
     distance = json['distance'] != null ? double.parse(json['distance'].toString()) : null;
+    bestTimeDelevery = json['best_time_delevery'];
   }
 
   Map<String, dynamic> toJson() {
