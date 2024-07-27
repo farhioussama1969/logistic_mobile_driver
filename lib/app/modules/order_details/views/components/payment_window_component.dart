@@ -115,20 +115,29 @@ class PaymentWindowComponent extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        '${orderData?.deleveryCost?.floor() ?? 0} ${StringsAssetsConstants.currency}',
-                        style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                          color: MainColors.errorColor(context),
-                          decoration: TextDecoration.lineThrough,
+                      if (orderData?.coupon != null)
+                        Text(
+                          '${orderData?.deleveryCost?.floor() ?? 0} ${StringsAssetsConstants.currency}',
+                          style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                            color: MainColors.errorColor(context),
+                            decoration: TextDecoration.lineThrough,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10.w),
-                      Text(
-                        '${orderData?.profitCost?.floor() ?? 0} ${StringsAssetsConstants.currency}',
-                        style: TextStyles.largeBodyTextStyle(context).copyWith(
-                          color: MainColors.successColor(context),
+                      if (orderData?.coupon != null) SizedBox(width: 10.w),
+                      if (orderData?.coupon != null)
+                        Text(
+                          '${orderData?.profitCost?.floor() ?? 0} ${StringsAssetsConstants.currency}',
+                          style: TextStyles.largeBodyTextStyle(context).copyWith(
+                            color: MainColors.successColor(context),
+                          ),
                         ),
-                      ),
+                      if (orderData?.coupon == null)
+                        Text(
+                          '${orderData?.deleveryCost?.floor() ?? 0} ${StringsAssetsConstants.currency}',
+                          style: TextStyles.largeBodyTextStyle(context).copyWith(
+                            color: MainColors.successColor(context),
+                          ),
+                        ),
                     ],
                   ),
                   Row(

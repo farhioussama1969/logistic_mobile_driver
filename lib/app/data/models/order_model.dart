@@ -33,6 +33,7 @@ class OrderModel {
   double? profitCost;
   int? routeType;
   String? bestTimeDelevery;
+  String? coupon;
 
   OrderModel({
     this.id,
@@ -103,6 +104,7 @@ class OrderModel {
     currentDistance = json['current_distance'] != null ? double.parse(json['current_distance'].toString()) : null;
     distance = json['distance'] != null ? double.parse(json['distance'].toString()) : null;
     bestTimeDelevery = json['best_time_delevery'];
+    coupon = json['coupon'];
   }
 
   Map<String, dynamic> toJson() {

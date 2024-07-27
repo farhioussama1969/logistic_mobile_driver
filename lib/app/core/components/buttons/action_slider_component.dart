@@ -26,7 +26,7 @@ class ActionSliderComponent extends StatelessWidget {
         width: double.infinity,
         backgroundColor: MainColors.inputColor(context),
         icon: SvgPicture.asset(
-          IconsAssetsConstants.slideIcon,
+          IconsAssetsConstants.arrowRightIcon,
           color: MainColors.whiteColor,
           width: 30.sp,
         ),
