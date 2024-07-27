@@ -60,7 +60,7 @@
   "create new order": "إنشاء طلب جديد",
   "home note": "لوجستي هو التطبيق الذي يتيح لك طلب توصيل أي منتج أو سلعة، وتسليمه إلى المكان المحدد وفي الوقت المحدد، وتتبع الطلب من مكان الطلب إلى مكان الاستلام بخطوات بسيطة.",
   "order number": "رقم الطلب",
-  "item price": "سعر العنصر",
+  "item price": "سعر السلعة",
   "delivery price": "سعر التوصيل",
   "total price": "السعر الإجمالي",
   "order status": "حالة الطلب",
@@ -183,8 +183,8 @@
   "you can only cancel the order after": "لا يمكنك إلغاء الطلب إلا بعد",
 
   "car type": "نوع السيارة",
-  "license expiry date" : "تاريخ انتهاء الرخصة",
-  "black card": "البطاقة الرمادية",
+  "license expiry date" : "تاريخ انتهاء رخصة السياقة",
+  "black card": "الفيدونج",
   "register number": "رقم التسجيل",
   "next inspection date": "تاريخ الفحص القادم",
   "insurance expiry date": "تاريخ انتهاء التأمين"
