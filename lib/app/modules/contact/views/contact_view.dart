@@ -101,12 +101,11 @@ class ContactView extends GetView<ContactController> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30.h),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 50.h),
                   Row(
                     children: [
                       Text(
-                        StringsAssetsConstants.contactUsOnTheFollowingNumbers,
+                        StringsAssetsConstants.orContactUsVia,
                         style: TextStyles.mediumLabelTextStyle(context),
                       ),
                     ],
@@ -117,7 +116,7 @@ class ContactView extends GetView<ContactController> {
                       Row(
                         children: [
                           IconButtonComponent(
-                            iconLink: IconsAssetsConstants.phoneIcon,
+                            iconLink: IconsAssetsConstants.emailIcon,
                             onTap: () {
                               UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
                             },
@@ -146,7 +145,78 @@ class ContactView extends GetView<ContactController> {
                       Row(
                         children: [
                           IconButtonComponent(
-                            iconLink: IconsAssetsConstants.phoneIcon,
+                            iconLink: IconsAssetsConstants.whatsappLogoIcon,
+                            onTap: () {
+                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
+                            },
+                            iconWidth: 18.r,
+                            iconHeight: 18.r,
+                            border: Border.all(
+                              color: MainColors.disableColor(context)!.withOpacity(0.3),
+                              width: 2.r,
+                            ),
+                          ),
+                          SizedBox(width: 10.w),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
+                              },
+                              child: Text(
+                                '+213663095778',
+                                style: TextStyles.largeBodyTextStyle(context),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 50.h),
+                  Row(
+                    children: [
+                      Text(
+                        StringsAssetsConstants.socialMedia,
+                        style: TextStyles.mediumLabelTextStyle(context),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          IconButtonComponent(
+                            iconLink: IconsAssetsConstants.facebookLogoIcon,
+                            onTap: () {
+                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
+                            },
+                            iconWidth: 18.r,
+                            iconHeight: 18.r,
+                            border: Border.all(
+                              color: MainColors.disableColor(context)!.withOpacity(0.3),
+                              width: 2.r,
+                            ),
+                          ),
+                          SizedBox(width: 10.w),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
+                              },
+                              child: Text(
+                                '+213663095778',
+                                style: TextStyles.largeBodyTextStyle(context),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15.h),
+                      Row(
+                        children: [
+                          IconButtonComponent(
+                            iconLink: IconsAssetsConstants.instagramIcon,
                             onTap: () {
                               UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
                             },
