@@ -178,4 +178,8 @@ static String get blackCard{return "black card".tr;}
 static String get registerNumber{return "register number".tr;}
 static String get nextInspectionDate{return "next inspection date".tr;}
 static String get insuranceExpiryDate{return "insurance expiry date".tr;}
+static String get contactUsOnTheFollowingNumbers{return "contact us on the following numbers".tr;}
+static String get orContactUsVia{return "or contact us via".tr;}
+static String get socialMedia{return "social media".tr;}
+static String get doNotHesitateToAskForALoogistiTeamInquiry{return "do not hesitate to ask for a loogisti team inquiry".tr;}
 }
