@@ -5,6 +5,7 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/components/animations/loading_component.dart';
 import 'package:loogisti/app/core/components/buttons/icon_button_component.dart';
+import 'package:loogisti/app/core/components/images/network_image_component.dart';
 import 'package:loogisti/app/core/components/others/header_component.dart';
 import 'package:loogisti/app/core/constants/get_builders_ids_constants.dart';
 import 'package:loogisti/app/core/constants/icons_assets_constants.dart';
@@ -42,63 +43,66 @@ class ContactView extends GetView<ContactController> {
                   SizedBox(height: 20.h),
                   Column(
                     children: [
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.phoneIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
+                      for (int i = 0; i < (controller.contact?.numberContact?.length ?? 0); i++)
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                IconButtonComponent(
+                                  child: NetworkImageComponent(
+                                    imageLink: '${controller.contact?.numberContact?[i].photo}',
+                                    loadingWidget: SizedBox(),
+                                  ),
+                                  onTap: () {
+                                    if (controller.contact?.numberContact?[i].type == 'call') {
+                                      UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.numberContact?[i].value}');
+                                    } else if (controller.contact?.numberContact?[i].type == 'whatsapp') {
+                                      UrlLauncherService.chatWithWhatsapp(
+                                          phoneNUmber: '${controller.contact?.numberContact?[i].value}', message: '');
+                                    } else if (controller.contact?.numberContact?[i].type == 'email') {
+                                      UrlLauncherService.sendMail(
+                                        mail: '${controller.contact?.numberContact?[i].value}',
+                                      );
+                                    } else {
+                                      UrlLauncherService.openLink(link: '${controller.contact?.numberContact?[i].value}');
+                                    }
+                                  },
+                                  iconWidth: 18.r,
+                                  iconHeight: 18.r,
+                                  border: Border.all(
+                                    color: MainColors.disableColor(context)!.withOpacity(0.3),
+                                    width: 2.r,
+                                  ),
+                                  iconLink: '',
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      if (controller.contact?.numberContact?[i].type == 'call') {
+                                        UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.numberContact?[i].value}');
+                                      } else if (controller.contact?.numberContact?[i].type == 'whatsapp') {
+                                        UrlLauncherService.chatWithWhatsapp(
+                                            phoneNUmber: '${controller.contact?.numberContact?[i].value}', message: '');
+                                      } else if (controller.contact?.numberContact?[i].type == 'email') {
+                                        UrlLauncherService.sendMail(
+                                          mail: '${controller.contact?.numberContact?[i].value}',
+                                        );
+                                      } else {
+                                        UrlLauncherService.openLink(link: '${controller.contact?.numberContact?[i].value}');
+                                      }
+                                    },
+                                    child: Text(
+                                      '${controller.contact?.numberContact?[i].value}',
+                                      style: TextStyles.largeBodyTextStyle(context),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 15.h),
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.phoneIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
-                            ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                            SizedBox(height: 15.h),
+                          ],
+                        ),
                     ],
                   ),
                   SizedBox(height: 50.h),
@@ -113,63 +117,66 @@ class ContactView extends GetView<ContactController> {
                   SizedBox(height: 20.h),
                   Column(
                     children: [
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.emailIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
+                      for (int i = 0; i < (controller.contact?.socialContact?.length ?? 0); i++)
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                IconButtonComponent(
+                                  child: NetworkImageComponent(
+                                    imageLink: '${controller.contact?.socialContact?[i].photo}',
+                                    loadingWidget: SizedBox(),
+                                  ),
+                                  onTap: () {
+                                    if (controller.contact?.socialContact?[i].type == 'call') {
+                                      UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.socialContact?[i].value}');
+                                    } else if (controller.contact?.socialContact?[i].type == 'whatsapp') {
+                                      UrlLauncherService.chatWithWhatsapp(
+                                          phoneNUmber: '${controller.contact?.socialContact?[i].value}', message: '');
+                                    } else if (controller.contact?.socialContact?[i].type == 'email') {
+                                      UrlLauncherService.sendMail(
+                                        mail: '${controller.contact?.socialContact?[i].value}',
+                                      );
+                                    } else {
+                                      UrlLauncherService.openLink(link: '${controller.contact?.socialContact?[i].value}');
+                                    }
+                                  },
+                                  iconWidth: 18.r,
+                                  iconHeight: 18.r,
+                                  border: Border.all(
+                                    color: MainColors.disableColor(context)!.withOpacity(0.3),
+                                    width: 2.r,
+                                  ),
+                                  iconLink: '',
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      if (controller.contact?.socialContact?[i].type == 'call') {
+                                        UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.socialContact?[i].value}');
+                                      } else if (controller.contact?.socialContact?[i].type == 'whatsapp') {
+                                        UrlLauncherService.chatWithWhatsapp(
+                                            phoneNUmber: '${controller.contact?.socialContact?[i].value}', message: '');
+                                      } else if (controller.contact?.socialContact?[i].type == 'email') {
+                                        UrlLauncherService.sendMail(
+                                          mail: '${controller.contact?.socialContact?[i].value}',
+                                        );
+                                      } else {
+                                        UrlLauncherService.openLink(link: '${controller.contact?.socialContact?[i].value}');
+                                      }
+                                    },
+                                    child: Text(
+                                      '${controller.contact?.socialContact?[i].value}',
+                                      style: TextStyles.largeBodyTextStyle(context),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 15.h),
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.whatsappLogoIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
-                            ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                            SizedBox(height: 15.h),
+                          ],
+                        ),
                     ],
                   ),
                   SizedBox(height: 50.h),
@@ -184,63 +191,66 @@ class ContactView extends GetView<ContactController> {
                   SizedBox(height: 20.h),
                   Column(
                     children: [
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.facebookLogoIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
+                      for (int i = 0; i < (controller.contact?.socialLink?.length ?? 0); i++)
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                IconButtonComponent(
+                                  child: NetworkImageComponent(
+                                    imageLink: '${controller.contact?.socialLink?[i].photo}',
+                                    loadingWidget: SizedBox(),
+                                  ),
+                                  onTap: () {
+                                    if (controller.contact?.socialLink?[i].type == 'call') {
+                                      UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.socialLink?[i].value}');
+                                    } else if (controller.contact?.socialLink?[i].type == 'whatsapp') {
+                                      UrlLauncherService.chatWithWhatsapp(
+                                          phoneNUmber: '${controller.contact?.socialLink?[i].value}', message: '');
+                                    } else if (controller.contact?.socialLink?[i].type == 'email') {
+                                      UrlLauncherService.sendMail(
+                                        mail: '${controller.contact?.socialLink?[i].value}',
+                                      );
+                                    } else {
+                                      UrlLauncherService.openLink(link: '${controller.contact?.socialLink?[i].value}');
+                                    }
+                                  },
+                                  iconWidth: 18.r,
+                                  iconHeight: 18.r,
+                                  border: Border.all(
+                                    color: MainColors.disableColor(context)!.withOpacity(0.3),
+                                    width: 2.r,
+                                  ),
+                                  iconLink: '',
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      if (controller.contact?.socialLink?[i].type == 'call') {
+                                        UrlLauncherService.callPhone(phoneNUmber: '${controller.contact?.socialLink?[i].value}');
+                                      } else if (controller.contact?.socialLink?[i].type == 'whatsapp') {
+                                        UrlLauncherService.chatWithWhatsapp(
+                                            phoneNUmber: '${controller.contact?.socialLink?[i].value}', message: '');
+                                      } else if (controller.contact?.socialLink?[i].type == 'email') {
+                                        UrlLauncherService.sendMail(
+                                          mail: '${controller.contact?.socialLink?[i].value}',
+                                        );
+                                      } else {
+                                        UrlLauncherService.openLink(link: '${controller.contact?.socialLink?[i].value}');
+                                      }
+                                    },
+                                    child: Text(
+                                      '${controller.contact?.socialLink?[i].value}',
+                                      style: TextStyles.largeBodyTextStyle(context),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 15.h),
-                      Row(
-                        children: [
-                          IconButtonComponent(
-                            iconLink: IconsAssetsConstants.instagramIcon,
-                            onTap: () {
-                              UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                            },
-                            iconWidth: 18.r,
-                            iconHeight: 18.r,
-                            border: Border.all(
-                              color: MainColors.disableColor(context)!.withOpacity(0.3),
-                              width: 2.r,
-                            ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                UrlLauncherService.callPhone(phoneNUmber: '+213663095778');
-                              },
-                              child: Text(
-                                '+213663095778',
-                                style: TextStyles.largeBodyTextStyle(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                            SizedBox(height: 15.h),
+                          ],
+                        ),
                     ],
                   ),
                 ],

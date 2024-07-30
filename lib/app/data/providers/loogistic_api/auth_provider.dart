@@ -69,6 +69,7 @@ class AuthProvider {
     String? nextInspectionDate,
     String? insuranceExpiryDate,
     File? avatarFile,
+    String? fireExtinguisherExpiryDate,
     Function? onLoading,
     Function? onFinal,
   }) async {
@@ -83,6 +84,7 @@ class AuthProvider {
         "register_number": registerNumber,
         "next_inspection_date": nextInspectionDate,
         "insurance_expiry_date": insuranceExpiryDate,
+        "fire_extinguisher_expiry_date": fireExtinguisherExpiryDate,
         "phone": phoneNumber,
         if (avatarFile != null)
           "photo": avatarFile == null ? null : await dio.MultipartFile.fromFile(avatarFile.path, filename: avatarFile.path.split('/').last),

@@ -182,4 +182,5 @@ static String get contactUsOnTheFollowingNumbers{return "contact us on the follo
 static String get orContactUsVia{return "or contact us via".tr;}
 static String get socialMedia{return "social media".tr;}
 static String get doNotHesitateToAskForALoogistiTeamInquiry{return "do not hesitate to ask for a loogisti team inquiry".tr;}
+static String get fireextinguisherexpirydate{return "fireExtinguisherExpiryDate".tr;}
 }

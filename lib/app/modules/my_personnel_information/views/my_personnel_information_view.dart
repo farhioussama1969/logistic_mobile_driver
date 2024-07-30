@@ -148,12 +148,27 @@ class MyPersonnelInformationView extends GetView<MyPersonnelInformationControlle
                       return DateInputComponent(
                         focusNode: controller.insuranceExpiryDateFocusNode,
                         textController: controller.insuranceExpiryDateController,
-                        nextNode: controller.insuranceExpiryDateFocusNode,
+                        nextNode: controller.fireExtinguisherExpiryDateFocusNode,
                         borderColor: MainColors.textColor(context),
                         label: StringsAssetsConstants.insuranceExpiryDate,
                         hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.insuranceExpiryDate}...',
                         selectedDate: controller.insuranceExpiryDate,
                         callBack: (date) => controller.setInsuranceExpiryDate(date),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 15.h),
+                  GetBuilder<MyPersonnelInformationController>(
+                    id: GetBuildersIdsConstants.myPersonnelInformationDates,
+                    builder: (logic) {
+                      return DateInputComponent(
+                        focusNode: controller.fireExtinguisherExpiryDateFocusNode,
+                        textController: controller.fireExtinguisherExpiryDateController,
+                        borderColor: MainColors.textColor(context),
+                        label: StringsAssetsConstants.fireextinguisherexpirydate,
+                        hint: '${StringsAssetsConstants.enter} ${StringsAssetsConstants.fireextinguisherexpirydate}...',
+                        selectedDate: controller.fireExtinguisherExpiryDate,
+                        callBack: (date) => controller.setFireExtinguisherExpiryDate(date),
                       );
                     },
                   ),

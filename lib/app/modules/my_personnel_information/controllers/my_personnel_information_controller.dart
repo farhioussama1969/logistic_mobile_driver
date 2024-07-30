@@ -21,6 +21,7 @@ class MyPersonnelInformationController extends GetxController {
   final FocusNode registerNumberFocusNode = FocusNode();
   final FocusNode nextInspectionDateFocusNode = FocusNode();
   final FocusNode insuranceExpiryDateFocusNode = FocusNode();
+  final FocusNode fireExtinguisherExpiryDateFocusNode = FocusNode();
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
@@ -30,6 +31,7 @@ class MyPersonnelInformationController extends GetxController {
   final TextEditingController registerNumberController = TextEditingController();
   final TextEditingController nextInspectionDateController = TextEditingController();
   final TextEditingController insuranceExpiryDateController = TextEditingController();
+  final TextEditingController fireExtinguisherExpiryDateController = TextEditingController();
 
   DateTime? licenseExpiryDate;
   void setLicenseExpiryDate(DateTime? value) {
@@ -46,6 +48,12 @@ class MyPersonnelInformationController extends GetxController {
   DateTime? insuranceExpiryDate;
   void setNextInspectionDate(DateTime? value) {
     insuranceExpiryDate = value;
+    update([GetBuildersIdsConstants.myPersonnelInformationDates]);
+  }
+
+  DateTime? fireExtinguisherExpiryDate;
+  void setFireExtinguisherExpiryDate(DateTime? value) {
+    fireExtinguisherExpiryDate = value;
     update([GetBuildersIdsConstants.myPersonnelInformationDates]);
   }
 
@@ -70,6 +78,7 @@ class MyPersonnelInformationController extends GetxController {
     registerNumberController.text = Get.find<UserController>().user?.registerNumber ?? '';
     nextInspectionDateController.text = Get.find<UserController>().user?.nextInspectionDate ?? '';
     insuranceExpiryDateController.text = Get.find<UserController>().user?.insuranceExpiryDate ?? '';
+    fireExtinguisherExpiryDateController.text = Get.find<UserController>().user?.fireExtinguisherExpiryDate ?? '';
   }
 
   void updateUserData() {
@@ -88,6 +97,7 @@ class MyPersonnelInformationController extends GetxController {
       nextInspectionDate: nextInspectionDateController.text,
       registerNumber: registerNumberController.text,
       avatarFile: avatarFile,
+      fireExtinguisherExpiryDate: fireExtinguisherExpiryDateController.text,
       onLoading: () => changeUpdateMyPersonnelInformationLoading(true),
       onFinal: () => changeUpdateMyPersonnelInformationLoading(false),
     )

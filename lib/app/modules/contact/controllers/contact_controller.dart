@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:loogisti/app/core/constants/get_builders_ids_constants.dart';
+import 'package:loogisti/app/data/models/contact_us_model.dart';
 import 'package:loogisti/app/data/providers/loogistic_api/config_provider.dart';
 
 class ContactController extends GetxController {
@@ -9,15 +10,15 @@ class ContactController extends GetxController {
     update([GetBuildersIdsConstants.contactBody]);
   }
 
-  String? contact;
-  void changeTermsAndConditions(String value) {
+  ContactUsModel? contact;
+  void changeTermsAndConditions(ContactUsModel value) {
     contact = value;
     update([GetBuildersIdsConstants.contactBody]);
   }
 
   Future<void> getContact() async {
     await ConfigProvider()
-        .termsAndConditions(
+        .contact(
       onLoading: () => changeContactLoading(true),
       onFinal: () => changeContactLoading(false),
     )

@@ -1,6 +1,7 @@
 import 'package:loogisti/app/core/constants/end_points_constants.dart';
 import 'package:loogisti/app/core/services/http_client_service.dart';
 import 'package:loogisti/app/data/models/api_response.dart';
+import 'package:loogisti/app/data/models/contact_us_model.dart';
 import 'package:loogisti/app/data/models/general_settings_model.dart';
 
 class ConfigProvider {
@@ -20,7 +21,7 @@ class ConfigProvider {
     return null;
   }
 
-  Future<String?> contact({
+  Future<ContactUsModel?> contact({
     required Function onLoading,
     required Function onFinal,
   }) async {
@@ -31,7 +32,7 @@ class ConfigProvider {
       onFinal: () => onFinal(),
     );
     if (response?.body != null) {
-      return response?.body['contact']['content'];
+      return ContactUsModel.fromJson(response?.body);
     }
     return null;
   }

@@ -16,6 +16,7 @@ class UserModel {
   String? registerNumber;
   String? nextInspectionDate;
   String? insuranceExpiryDate;
+  String? fireExtinguisherExpiryDate;
 
   UserModel(
       {this.id,
@@ -34,7 +35,8 @@ class UserModel {
       this.blackCard,
       this.registerNumber,
       this.nextInspectionDate,
-      this.insuranceExpiryDate});
+      this.insuranceExpiryDate,
+      this.fireExtinguisherExpiryDate});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -54,6 +56,7 @@ class UserModel {
     registerNumber = json['register_number'];
     nextInspectionDate = json['next_inspection_date'];
     insuranceExpiryDate = json['insurance_expiry_date'];
+    fireExtinguisherExpiryDate = json['fire_extinguisher_expiry_date'];
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +78,7 @@ class UserModel {
     data['register_number'] = this.registerNumber;
     data['next_inspection_date'] = this.nextInspectionDate;
     data['insurance_expiry_date'] = this.insuranceExpiryDate;
+    data['fire_extinguisher_expiry_date'] = this.fireExtinguisherExpiryDate;
     return data;
   }
 }
