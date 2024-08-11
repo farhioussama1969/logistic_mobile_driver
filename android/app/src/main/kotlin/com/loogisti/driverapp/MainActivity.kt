@@ -1,4 +1,4 @@
-package com.hoskadev.loogistidriver
+package com.loogisti.driverapp
 
 import io.flutter.embedding.android.FlutterActivity
 
