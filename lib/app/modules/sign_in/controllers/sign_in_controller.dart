@@ -16,20 +16,57 @@ class SignInController extends GetxController {
   void signInWithGoogle() {
     if (googleSignInLoading) return;
     FirebaseAuthenticationService()
-        .googleAuthentication(onLoading: () => changeGoogleSignInLoading(true), onFinal: () => changeGoogleSignInLoading(false))
+        .googleAuthentication(
+            onLoading: () => changeGoogleSignInLoading(true),
+            onFinal: () => changeGoogleSignInLoading(false))
         .then((auth) async {
       if (auth?.firebaseUserCredential != null) {
         log('${await auth?.firebaseUserCredential?.user?.getIdToken()}');
         AuthProvider()
             .socialLogin(
-          firebaseAuthToken: await auth?.firebaseUserCredential?.user?.getIdToken(),
+          firebaseAuthToken:
+              await auth?.firebaseUserCredential?.user?.getIdToken(),
           onLoading: () => changeGoogleSignInLoading(true),
           onFinal: () => changeGoogleSignInLoading(false),
         )
             .then((user) async {
           if (user != null) {
             await Get.find<UserController>().setUser(user);
-            await Get.find<UserController>().initialize(skipUpdateChecker: true);
+            await Get.find<UserController>()
+                .initialize(skipUpdateChecker: true);
+          }
+        });
+      }
+    });
+  }
+
+  bool appleSignInLoading = false;
+  void changeAppleSignInLoading(bool value) {
+    appleSignInLoading = value;
+    update([GetBuildersIdsConstants.signInAppleButton]);
+  }
+
+  void signInWithApple() {
+    if (googleSignInLoading) return;
+    FirebaseAuthenticationService()
+        .appleAuthentication(
+            onLoading: () => changeAppleSignInLoading(true),
+            onFinal: () => changeAppleSignInLoading(false))
+        .then((auth) async {
+      if (auth?.firebaseUserCredential != null) {
+        log('${await auth?.firebaseUserCredential?.user?.getIdToken()}');
+        AuthProvider()
+            .socialLogin(
+          firebaseAuthToken:
+              await auth?.firebaseUserCredential?.user?.getIdToken(),
+          onLoading: () => changeAppleSignInLoading(true),
+          onFinal: () => changeAppleSignInLoading(false),
+        )
+            .then((user) async {
+          if (user != null) {
+            await Get.find<UserController>().setUser(user);
+            await Get.find<UserController>()
+                .initialize(skipUpdateChecker: true);
           }
         });
       }

@@ -27,17 +27,24 @@ import 'app/routes/app_pages.dart';
 late final FirebaseMessaging _messaging;
 
 Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  LocalStorageService.saveData(key: StorageKeysConstants.newNotification, type: DataTypes.bool, value: true);
+  LocalStorageService.saveData(
+      key: StorageKeysConstants.newNotification,
+      type: DataTypes.bool,
+      value: true);
 }
 
 Future<void> requestAndRegisterNotification() async {
   await Firebase.initializeApp();
   _messaging = FirebaseMessaging.instance;
-  print('firebase token: ${await _messaging.getToken()}');
-  if (await LocalStorageService.loadData(key: StorageKeysConstants.fcmToken, type: DataTypes.string) == null) {
+  if (await LocalStorageService.loadData(
+          key: StorageKeysConstants.fcmToken, type: DataTypes.string) ==
+      null) {
     _messaging.getToken().then((token) async {
       print('firebase token: ${token}');
-      LocalStorageService.saveData(key: StorageKeysConstants.fcmToken, type: DataTypes.string, value: token);
+      LocalStorageService.saveData(
+          key: StorageKeysConstants.fcmToken,
+          type: DataTypes.string,
+          value: token);
       _messaging.subscribeToTopic(FirebaseMessagingTobicsConstants.allClients);
     });
   }
@@ -52,15 +59,21 @@ Future<void> requestAndRegisterNotification() async {
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
-        LocalNotificationService.showNotification(title: message.notification?.title, body: message.notification?.body);
-        LocalStorageService.saveData(key: StorageKeysConstants.newNotification, type: DataTypes.bool, value: true);
+        LocalNotificationService.showNotification(
+            title: message.notification?.title,
+            body: message.notification?.body);
+        LocalStorageService.saveData(
+            key: StorageKeysConstants.newNotification,
+            type: DataTypes.bool,
+            value: true);
         if (Get.isRegistered<HomeController>()) {
           Get.find<HomeController>().changeIsThereIsANewNotification(true);
           Get.find<HomeController>().refreshHome();
         }
       },
     );
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {});
+    FirebaseMessaging.onMessageOpenedApp
+        .listen((RemoteMessage message) async {});
   }
 }
 

@@ -35,7 +35,10 @@ class SignInView extends GetView<SignInController> {
             end: 0,
             child: SvgPicture.asset(
               ImagesAssetsConstants.signInBackground1Image,
-            ).animate(delay: 100.ms).fadeIn(duration: 900.ms, delay: 300.ms).move(begin: const Offset(0, -16), curve: Curves.easeOutQuad),
+            )
+                .animate(delay: 100.ms)
+                .fadeIn(duration: 900.ms, delay: 300.ms)
+                .move(begin: const Offset(0, -16), curve: Curves.easeOutQuad),
           ),
           PositionedDirectional(
             bottom: 50.h,
@@ -47,7 +50,10 @@ class SignInView extends GetView<SignInController> {
               endOffset: Offset(0, 0.1.h),
               child: SvgPicture.asset(
                 ImagesAssetsConstants.signInBackground2Image,
-              ).animate(delay: 100.ms).fadeIn(duration: 900.ms, delay: 300.ms).move(begin: const Offset(16, 0), curve: Curves.easeOutQuad),
+              )
+                  .animate(delay: 100.ms)
+                  .fadeIn(duration: 900.ms, delay: 300.ms)
+                  .move(begin: const Offset(16, 0), curve: Curves.easeOutQuad),
             ),
           ),
           PositionedDirectional(
@@ -96,8 +102,13 @@ class SignInView extends GetView<SignInController> {
                   )
                       .animate(delay: 100.ms)
                       .fadeIn(duration: 900.ms, delay: 300.ms)
-                      .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                      .move(begin: const Offset(0, -16), curve: Curves.easeOutQuad),
+                      .shimmer(
+                          blendMode: BlendMode.srcOver,
+                          color: MainColors.backgroundColor(context)
+                              ?.withOpacity(0.3))
+                      .move(
+                          begin: const Offset(0, -16),
+                          curve: Curves.easeOutQuad),
                   const Expanded(flex: 1, child: SizedBox.shrink()),
                   Column(
                     children: [
@@ -130,28 +141,44 @@ class SignInView extends GetView<SignInController> {
                               builder: (logic) {
                                 return SocialLoginButtonComponent(
                                   iconPath: IconsAssetsConstants.googleIcon,
-                                  title: StringsAssetsConstants.signInWithGoogle,
+                                  title:
+                                      StringsAssetsConstants.signInWithGoogle,
                                   onTap: () => logic.signInWithGoogle(),
                                   isLoading: logic.googleSignInLoading,
                                 );
                               })
                           .animate(delay: (1 * 200).ms)
                           .fadeIn(duration: 900.ms, delay: 300.ms)
-                          .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                          .move(begin: const Offset(15, 0), curve: Curves.easeOutQuad),
+                          .shimmer(
+                              blendMode: BlendMode.srcOver,
+                              color: MainColors.backgroundColor(context)
+                                  ?.withOpacity(0.3))
+                          .move(
+                              begin: const Offset(15, 0),
+                              curve: Curves.easeOutQuad),
                       SizedBox(height: 15.h),
                       if (Platform.isIOS)
-                        SocialLoginButtonComponent(
-                          iconPath: IconsAssetsConstants.appleIcon,
-                          iconColor: MainColors.textColor(context),
-                          title: StringsAssetsConstants.signInWithApple,
-                          onTap: () {},
-                          isLoading: false,
-                        )
+                        GetBuilder<SignInController>(
+                                id: GetBuildersIdsConstants.signInAppleButton,
+                                builder: (logic) {
+                                  return SocialLoginButtonComponent(
+                                    iconPath: IconsAssetsConstants.appleIcon,
+                                    iconColor: MainColors.textColor(context),
+                                    title:
+                                        StringsAssetsConstants.signInWithApple,
+                                    onTap: () => logic.signInWithApple(),
+                                    isLoading: logic.appleSignInLoading,
+                                  );
+                                })
                             .animate(delay: (2 * 200).ms)
                             .fadeIn(duration: 900.ms, delay: 300.ms)
-                            .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                            .move(begin: const Offset(-15, 0), curve: Curves.easeOutQuad),
+                            .shimmer(
+                                blendMode: BlendMode.srcOver,
+                                color: MainColors.backgroundColor(context)
+                                    ?.withOpacity(0.3))
+                            .move(
+                                begin: const Offset(-15, 0),
+                                curve: Curves.easeOutQuad),
                       SizedBox(height: 30.h),
                     ],
                   ),

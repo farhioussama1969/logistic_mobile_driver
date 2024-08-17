@@ -22,10 +22,33 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Loogisti requires access to your phone's camera to take a profile picture or to take some pictures of order attachments.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Loogisti requires access to your location, in order to add it to your order.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Need Location permission</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Loogisti requires access to your location, in order to add it to your order.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Loogisti requires access to your Microphone.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Loogisti requires access to your photo library to pick a profile picture or to pick some pictures of order attachments.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -48,18 +71,5 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>Loogisti requires access to your phone's camera to take a profile picture or to take some pictures of order attachments.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Loogisti requires access to your location, in order to add it to your order.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Need Location permission</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Loogisti requires access to your location, in order to add it to your order.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Loogisti requires access to your Microphone.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Loogisti requires access to your photo library to pick a profile picture or to pick some pictures of order attachments.</string>
-    <key>UIApplicationSupportsIndirectInputEvents</key>
 </dict>
 </plist>
