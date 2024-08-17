@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du.apps.googleusercontent.com</string>
+	<string>427296167611-chmqkkigr5qaqh9n1l5ag0m1f9dh2je1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du</string>
+	<string>com.googleusercontent.apps.427296167611-chmqkkigr5qaqh9n1l5ag0m1f9dh2je1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>427296167611-a9vv7j6etkpspa84nnl82cuvrqoo48qk.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAE62FYbfIFt9A06pkMBDuS3icuv-e3q8U</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.solvodev.mexaMeubleMobile</string>
+	<string>com.loogisti.driverapp</string>
 	<key>PROJECT_ID</key>
 	<string>loogisti-38a9e</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:427296167611:ios:ac350d20523c1930bfbb9e</string>
+	<string>1:427296167611:ios:573dc2639b0b8b36bfbb9e</string>
 </dict>
 </plist>

@@ -59,11 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAE62FYbfIFt9A06pkMBDuS3icuv-e3q8U',
-    appId: '1:427296167611:ios:ac350d20523c1930bfbb9e',
+    appId: '1:427296167611:ios:573dc2639b0b8b36bfbb9e',
     messagingSenderId: '427296167611',
     projectId: 'loogisti-38a9e',
     storageBucket: 'loogisti-38a9e.appspot.com',
-    iosClientId: '427296167611-uarqofn5quafcrcrh6ii3i9e2tv693du.apps.googleusercontent.com',
-    iosBundleId: 'com.solvodev.mexaMeubleMobile',
+    androidClientId: '427296167611-a9vv7j6etkpspa84nnl82cuvrqoo48qk.apps.googleusercontent.com',
+    iosClientId: '427296167611-chmqkkigr5qaqh9n1l5ag0m1f9dh2je1.apps.googleusercontent.com',
+    iosBundleId: 'com.loogisti.driverapp',
   );
+
 }
