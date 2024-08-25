@@ -33,7 +33,8 @@ class HttpClientService {
     if (onLoading != null) onLoading();
     try {
       if (requestType == HttpRequestTypes.post) {
-        response = await post(endPoint, formData: data, header: header, onProgress: onProgress);
+        response = await post(endPoint,
+            formData: data, header: header, onProgress: onProgress);
       } else if (requestType == HttpRequestTypes.get) {
         response = await get(
           endPoint,
@@ -56,41 +57,49 @@ class HttpClientService {
       } else {
         if (response?.requestStatus == RequestStatus.serverError) {
           if (showErrorToast != false) {
-            ToastComponent.showErrorToast(Get.context!, text: StringsAssetsConstants.serverErrorMessage);
+            ToastComponent.showErrorToast(Get.context!,
+                text: StringsAssetsConstants.serverErrorMessage);
           }
           print('ok');
         } else if (response?.requestStatus == RequestStatus.clientError) {
           if (response?.statusCode == 401) {
-            ToastComponent.showErrorToast(Get.context!, text: StringsAssetsConstants.sessionExpired);
+            ToastComponent.showErrorToast(Get.context!,
+                text: StringsAssetsConstants.sessionExpired);
             Get.find<UserController>().clearUser(withoutLogout: true);
           } else {
             if (showErrorToast != false) {
-              ToastComponent.showErrorToast(Get.context!, text: response?.message);
+              ToastComponent.showErrorToast(Get.context!,
+                  text: response?.message);
             }
           }
         } else {
           if (showErrorToast != false) {
-            ToastComponent.showErrorToast(Get.context!, text: StringsAssetsConstants.internetErrorMessage);
+            ToastComponent.showErrorToast(Get.context!,
+                text: StringsAssetsConstants.internetErrorMessage);
           }
         }
-        if (onError != null) onError(convertResponseErrorsToString(response!), response);
+        if (onError != null)
+          onError(convertResponseErrorsToString(response!), response);
       }
     } catch (error) {
       if (showErrorToast != false) {
-        ToastComponent.showErrorToast(Get.context!, text: StringsAssetsConstants.internetErrorMessage);
+        ToastComponent.showErrorToast(Get.context!,
+            text: StringsAssetsConstants.internetErrorMessage);
       }
     } finally {
       if (onFinal != null) onFinal();
     }
   }
 
-  static Future<dio.BaseOptions> getBaseOptions({Map<String, String?>? header, int? timeout}) async {
+  static Future<dio.BaseOptions> getBaseOptions(
+      {Map<String, String?>? header, int? timeout}) async {
     header ??= <String, String?>{};
     header.addAll({
       "Accept": "application/json",
       "Content-type": "application/json",
       "Accept-Language": Get.locale?.languageCode,
-      "Authorization": "Bearer ${await LocalStorageService.loadData(key: StorageKeysConstants.serverApiToken, type: DataTypes.string)}"
+      "Authorization":
+          "Bearer ${await LocalStorageService.loadData(key: StorageKeysConstants.serverApiToken, type: DataTypes.string)}"
     });
     return dio.BaseOptions(
       baseUrl: Uri.encodeFull(_baseUrl),
@@ -102,7 +111,10 @@ class HttpClientService {
   }
 
   static Future<ApiResponse> get(String endPoint,
-      {int? timeout, Map<String, String>? header, Map<String, dynamic>? data, Map<String, dynamic>? queryParameters}) async {
+      {int? timeout,
+      Map<String, String>? header,
+      Map<String, dynamic>? data,
+      Map<String, dynamic>? queryParameters}) async {
     try {
       dio.Response response = await dio.Dio(
         await getBaseOptions(timeout: timeout, header: header),
@@ -152,7 +164,10 @@ class HttpClientService {
   }
 
   static Future<ApiResponse> delete(String endPoint,
-      {dynamic formData, Map<String, String>? header, int? timeout, Map<String, String>? queryParameters}) async {
+      {dynamic formData,
+      Map<String, String>? header,
+      int? timeout,
+      Map<String, String>? queryParameters}) async {
     try {
       dio.Response response = await dio.Dio(
         await getBaseOptions(
@@ -176,7 +191,10 @@ class HttpClientService {
   }
 
   static Future<ApiResponse> put(String endPoint,
-      {dynamic formData, Map<String, String>? header, int? timeout, Map<String, String>? queryParameters}) async {
+      {dynamic formData,
+      Map<String, String>? header,
+      int? timeout,
+      Map<String, String>? queryParameters}) async {
     try {
       dio.Response response = await dio.Dio(
         await getBaseOptions(
@@ -200,7 +218,10 @@ class HttpClientService {
   }
 
   static Future<ApiResponse> patch(String endPoint,
-      {dynamic formData, Map<String, String>? header, int? timeout, Map<String, String>? queryParameters}) async {
+      {dynamic formData,
+      Map<String, String>? header,
+      int? timeout,
+      Map<String, String>? queryParameters}) async {
     try {
       dio.Response response = await dio.Dio(
         await getBaseOptions(
@@ -224,18 +245,23 @@ class HttpClientService {
   }
 
   static ApiResponse _buildOut(dio.Response response) {
+    print(
+        'status code::: ${response.statusCode}, message: ${response.data['message']}');
+
     ApiResponse apiResponse = ApiResponse();
     if (response.statusCode == 200) {
       apiResponse.statusCode = response.statusCode;
       apiResponse.message = response.data['message'];
       apiResponse.body = response.data['result'];
       apiResponse.requestStatus = RequestStatus.success;
-    } else if ((response.statusCode ?? -0) >= 400 && (response.statusCode ?? -0) < 500) {
+    } else if ((response.statusCode ?? -0) >= 201 &&
+        (response.statusCode ?? -0) < 500) {
       apiResponse.statusCode = response.statusCode;
       apiResponse.message = response.data['message'];
       apiResponse.error = response.data['errors'];
       apiResponse.requestStatus = RequestStatus.clientError;
-    } else if ((response.statusCode ?? -0) >= 500 && (response.statusCode ?? -0) < 600) {
+    } else if ((response.statusCode ?? -0) >= 500 &&
+        (response.statusCode ?? -0) < 600) {
       apiResponse.statusCode = response.statusCode;
       apiResponse.message = response.data['message'];
       apiResponse.error = response.data['errors'];
@@ -246,11 +272,14 @@ class HttpClientService {
 
   static ApiResponse _errorNoResponse(dio.DioError error) {
     if (error.error is SocketException) {
-      return ApiResponse(statusCode: 502, requestStatus: RequestStatus.internetError);
+      return ApiResponse(
+          statusCode: 502, requestStatus: RequestStatus.internetError);
     } else if (error is TimeoutException) {
-      return ApiResponse(statusCode: 504, requestStatus: RequestStatus.internetError);
+      return ApiResponse(
+          statusCode: 504, requestStatus: RequestStatus.internetError);
     } else {
-      return ApiResponse(statusCode: 500, requestStatus: RequestStatus.serverError);
+      return ApiResponse(
+          statusCode: 500, requestStatus: RequestStatus.serverError);
     }
   }
 

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>427296167611-chmqkkigr5qaqh9n1l5ag0m1f9dh2je1.apps.googleusercontent.com</string>
+	<string>427296167611-19iqmq91l00j47l9lkmijo039ua1pb3l.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.427296167611-chmqkkigr5qaqh9n1l5ag0m1f9dh2je1</string>
+	<string>com.googleusercontent.apps.427296167611-19iqmq91l00j47l9lkmijo039ua1pb3l</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>427296167611-a9vv7j6etkpspa84nnl82cuvrqoo48qk.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.loogisti.driverapp</string>
+	<string>com.loogisti.logisticMobileDriver</string>
 	<key>PROJECT_ID</key>
 	<string>loogisti-38a9e</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:427296167611:ios:573dc2639b0b8b36bfbb9e</string>
+	<string>1:427296167611:ios:fc0d37dc005a48b7bfbb9e</string>
 </dict>
 </plist>
