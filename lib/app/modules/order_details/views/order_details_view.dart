@@ -59,24 +59,36 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                             )
                                 .animate(delay: 100.ms)
                                 .fadeIn(duration: 900.ms, delay: 300.ms)
-                                .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                                .move(begin: const Offset(0, -16), curve: Curves.easeOutQuad),
+                                .shimmer(
+                                    blendMode: BlendMode.srcOver,
+                                    color: MainColors.backgroundColor(context)
+                                        ?.withOpacity(0.3))
+                                .move(
+                                    begin: const Offset(0, -16),
+                                    curve: Curves.easeOutQuad),
                             SizedBox(height: 30.h),
                             Row(
                               children: [
                                 SizedBox(width: 10.w),
                                 Text(
                                   StringsAssetsConstants.destinationPoint,
-                                  style: TextStyles.mediumLabelTextStyle(context),
+                                  style:
+                                      TextStyles.mediumLabelTextStyle(context),
                                 )
                               ],
                             )
                                 .animate(delay: 200.ms)
                                 .fadeIn(duration: 900.ms, delay: 300.ms)
-                                .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                                .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
+                                .shimmer(
+                                    blendMode: BlendMode.srcOver,
+                                    color: MainColors.backgroundColor(context)
+                                        ?.withOpacity(0.3))
+                                .move(
+                                    begin: const Offset(-100, 0),
+                                    curve: Curves.easeOutQuad),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 15.h),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5.w, vertical: 15.h),
                               child: Row(
                                 children: [
                                   AnimatorComponent(
@@ -91,7 +103,8 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                         SizedBox(
                                           height: 40.h,
                                           child: VerticalDivider(
-                                            color: MainColors.textColor(context),
+                                            color:
+                                                MainColors.textColor(context),
                                             thickness: 1.r,
                                             indent: 0.r,
                                             endIndent: 0.r,
@@ -114,10 +127,17 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                           Row(
                                             children: [
                                               Expanded(
-                                                child: AnimatedTypeTextComponent(
-                                                  text: StringsAssetsConstants.pickUpLocation,
-                                                  textStyle: TextStyles.smallBodyTextStyle(context).copyWith(
-                                                    color: MainColors.textColor(context)!.withOpacity(0.6),
+                                                child:
+                                                    AnimatedTypeTextComponent(
+                                                  text: StringsAssetsConstants
+                                                      .pickUpLocation,
+                                                  textStyle: TextStyles
+                                                          .smallBodyTextStyle(
+                                                              context)
+                                                      .copyWith(
+                                                    color: MainColors.textColor(
+                                                            context)!
+                                                        .withOpacity(0.6),
                                                   ),
                                                   textAlign: TextAlign.start,
                                                 ),
@@ -134,12 +154,20 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                                             'https://maps.google.com/?ll=${logic.orderData?.pickupLocationLate},${logic.orderData?.pickupLocationLong}');
                                                   },
                                                   child: Text(
-                                                    controller.orderData?.puckUpName ?? '',
-                                                    style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                                      fontFamily: FontsFamilyAssetsConstants.bold,
+                                                    controller.orderData
+                                                            ?.puckUpName ??
+                                                        '',
+                                                    style: TextStyles
+                                                            .mediumBodyTextStyle(
+                                                                context)
+                                                        .copyWith(
+                                                      fontFamily:
+                                                          FontsFamilyAssetsConstants
+                                                              .bold,
                                                     ),
                                                     maxLines: 1,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                               ),
@@ -153,12 +181,21 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                           Row(
                                             children: [
                                               Expanded(
-                                                child: AnimatedTypeTextComponent(
-                                                    text: StringsAssetsConstants.deliveryLocation,
-                                                    textStyle: TextStyles.smallBodyTextStyle(context).copyWith(
-                                                      color: MainColors.textColor(context)!.withOpacity(0.6),
-                                                    ),
-                                                    textAlign: TextAlign.start),
+                                                child:
+                                                    AnimatedTypeTextComponent(
+                                                        text: StringsAssetsConstants
+                                                            .deliveryLocation,
+                                                        textStyle: TextStyles
+                                                                .smallBodyTextStyle(
+                                                                    context)
+                                                            .copyWith(
+                                                          color: MainColors
+                                                                  .textColor(
+                                                                      context)!
+                                                              .withOpacity(0.6),
+                                                        ),
+                                                        textAlign:
+                                                            TextAlign.start),
                                               ),
                                             ],
                                           ),
@@ -172,12 +209,20 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                                             'https://maps.google.com/?ll=${logic.orderData?.deliveryLocationLate},${logic.orderData?.deliveryLocationLong}');
                                                   },
                                                   child: Text(
-                                                    controller.orderData?.deliveryName ?? '',
-                                                    style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                                      fontFamily: FontsFamilyAssetsConstants.bold,
+                                                    controller.orderData
+                                                            ?.deliveryName ??
+                                                        '',
+                                                    style: TextStyles
+                                                            .mediumBodyTextStyle(
+                                                                context)
+                                                        .copyWith(
+                                                      fontFamily:
+                                                          FontsFamilyAssetsConstants
+                                                              .bold,
                                                     ),
                                                     maxLines: 1,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                               ),
@@ -192,10 +237,16 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                             )
                                 .animate(delay: 300.ms)
                                 .fadeIn(duration: 900.ms, delay: 300.ms)
-                                .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                                .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
+                                .shimmer(
+                                    blendMode: BlendMode.srcOver,
+                                    color: MainColors.backgroundColor(context)
+                                        ?.withOpacity(0.3))
+                                .move(
+                                    begin: const Offset(-100, 0),
+                                    curve: Curves.easeOutQuad),
                             if (controller.orderData?.orderComponent != null)
-                              GetBuilder<OrderDetailsController>(builder: (logic) {
+                              GetBuilder<OrderDetailsController>(
+                                  builder: (logic) {
                                 return Column(
                                   children: [
                                     SizedBox(height: 30.h),
@@ -204,61 +255,123 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                         SizedBox(width: 10.w),
                                         Text(
                                           StringsAssetsConstants.procedures,
-                                          style: TextStyles.mediumLabelTextStyle(context),
+                                          style:
+                                              TextStyles.mediumLabelTextStyle(
+                                                  context),
                                         )
                                       ],
                                     )
                                         .animate(delay: 200.ms)
                                         .fadeIn(duration: 900.ms, delay: 400.ms)
-                                        .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                                        .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
+                                        .shimmer(
+                                            blendMode: BlendMode.srcOver,
+                                            color: MainColors.backgroundColor(
+                                                    context)
+                                                ?.withOpacity(0.3))
+                                        .move(
+                                            begin: const Offset(-100, 0),
+                                            curve: Curves.easeOutQuad),
                                     SizedBox(height: 15.h),
                                     Row(children: [
                                       Expanded(
                                         child: Text(
-                                          controller.orderData?.orderComponent?.text ?? '',
-                                          style: TextStyles.mediumBodyTextStyle(context),
+                                          controller.orderData?.orderComponent
+                                                  ?.text ??
+                                              '',
+                                          style: TextStyles.mediumBodyTextStyle(
+                                              context),
                                         ),
                                       ),
                                       SizedBox(width: 4.w),
-                                      for (int i = 0; i < (controller.orderData?.orderComponent?.buttons?.length ?? 0); i++)
+                                      for (int i = 0;
+                                          i <
+                                              (controller
+                                                      .orderData
+                                                      ?.orderComponent
+                                                      ?.buttons
+                                                      ?.length ??
+                                                  0);
+                                          i++)
                                         Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5.w),
                                           child: InkWell(
                                             onTap: () {
                                               controller.changeOrderStatus(i);
-                                              if (controller.orderData?.orderComponent?.buttons?[i].isCallAction == 'true') {
+                                              if (controller
+                                                      .orderData
+                                                      ?.orderComponent
+                                                      ?.buttons?[i]
+                                                      .isCallAction ==
+                                                  'true') {
                                                 showCallWindow();
                                               }
                                             },
                                             child: TagComponent(
                                               title: '',
-                                              backgroundColor: ColorConvertorUtil()
-                                                  .stringColorCodeToColor(controller.orderData?.orderComponent?.buttons?[i].bgcolor),
-                                              titleWidget: controller.orderData?.orderComponent?.buttons?[i].isLoading != true
+                                              backgroundColor:
+                                                  ColorConvertorUtil()
+                                                      .stringColorCodeToColor(
+                                                          controller
+                                                              .orderData
+                                                              ?.orderComponent
+                                                              ?.buttons?[i]
+                                                              .bgcolor),
+                                              titleWidget: controller
+                                                          .orderData
+                                                          ?.orderComponent
+                                                          ?.buttons?[i]
+                                                          .isLoading !=
+                                                      true
                                                   ? Row(
                                                       children: [
-                                                        if (controller.orderData?.orderComponent?.buttons?[i].icon != null)
+                                                        if (controller
+                                                                .orderData
+                                                                ?.orderComponent
+                                                                ?.buttons?[i]
+                                                                .icon !=
+                                                            null)
                                                           SizedBox(
                                                             width: 25.r,
                                                             height: 25.r,
-                                                            child: NetworkImageComponent(
-                                                              imageLink: '${controller.orderData?.orderComponent?.buttons?[i].icon}',
-                                                              fit: BoxFit.contain,
-                                                              loadingWidget: const SizedBox.shrink(),
+                                                            child:
+                                                                NetworkImageComponent(
+                                                              imageLink:
+                                                                  '${controller.orderData?.orderComponent?.buttons?[i].icon}',
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                              loadingWidget:
+                                                                  const SizedBox
+                                                                      .shrink(),
                                                             ),
                                                           ),
                                                         SizedBox(width: 5.w),
                                                         Text(
-                                                          controller.orderData?.orderComponent?.buttons?[i].text ?? '',
-                                                          style: TextStyles.mediumBodyTextStyle(context).copyWith(
-                                                            color: ColorConvertorUtil().stringColorCodeToColor(
-                                                                controller.orderData?.orderComponent?.buttons?[i].color),
+                                                          controller
+                                                                  .orderData
+                                                                  ?.orderComponent
+                                                                  ?.buttons?[i]
+                                                                  .text ??
+                                                              '',
+                                                          style: TextStyles
+                                                                  .mediumBodyTextStyle(
+                                                                      context)
+                                                              .copyWith(
+                                                            color: ColorConvertorUtil()
+                                                                .stringColorCodeToColor(
+                                                                    controller
+                                                                        .orderData
+                                                                        ?.orderComponent
+                                                                        ?.buttons?[
+                                                                            i]
+                                                                        .color),
                                                           ),
                                                         ),
                                                       ],
                                                     )
-                                                  : const LoadingComponent(color: MainColors.whiteColor),
+                                                  : const LoadingComponent(
+                                                      color: MainColors
+                                                          .whiteColor),
                                             ),
                                           ),
                                         ),
@@ -266,30 +379,41 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
                                   ],
                                 );
                               }),
-                            if (controller.orderData?.status?.isNotEmpty ?? true) SizedBox(height: 30.h),
-                            if (controller.orderData?.status?.isNotEmpty ?? true)
+                            if (controller.orderData?.status?.isNotEmpty ??
+                                true)
+                              SizedBox(height: 30.h),
+                            if (controller.orderData?.status?.isNotEmpty ??
+                                true)
                               Row(
                                 children: [
                                   SizedBox(width: 10.w),
                                   Text(
                                     StringsAssetsConstants.orderStatusesHistory,
-                                    style: TextStyles.mediumLabelTextStyle(context),
+                                    style: TextStyles.mediumLabelTextStyle(
+                                        context),
                                   )
                                 ],
                               )
                                   .animate(delay: 200.ms)
                                   .fadeIn(duration: 900.ms, delay: 400.ms)
-                                  .shimmer(blendMode: BlendMode.srcOver, color: MainColors.backgroundColor(context)?.withOpacity(0.3))
-                                  .move(begin: const Offset(-100, 0), curve: Curves.easeOutQuad),
+                                  .shimmer(
+                                      blendMode: BlendMode.srcOver,
+                                      color: MainColors.backgroundColor(context)
+                                          ?.withOpacity(0.3))
+                                  .move(
+                                      begin: const Offset(-100, 0),
+                                      curve: Curves.easeOutQuad),
                             OrderStatusesHistorySectionComponent(
-                              orderStatusData: controller.orderData?.status ?? [],
+                              orderStatusData:
+                                  controller.orderData?.status ?? [],
                             ),
                           ],
                         ),
                       ),
                     ),
                   )
-                : const Center(child: LoadingComponent(color: MainColors.primaryColor));
+                : const Center(
+                    child: LoadingComponent(color: MainColors.primaryColor));
           }),
     );
   }
@@ -325,7 +449,8 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
         decoration: BoxDecoration(
           color: MainColors.backgroundColor(Get.context!),
-          borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(20.r)),
+          borderRadius:
+              BorderRadiusDirectional.vertical(top: Radius.circular(20.r)),
         ),
         child: Row(
           children: [
@@ -333,7 +458,9 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
               child: PrimaryButtonComponent(
                 text: StringsAssetsConstants.sender,
                 onTap: () {
-                  UrlLauncherService.callPhone(phoneNUmber: '${controller.orderData?.senderPhone}');
+                  Get.back();
+                  UrlLauncherService.callPhone(
+                      phoneNUmber: '${controller.orderData?.senderPhone}');
                 },
               ),
             ),
@@ -342,7 +469,10 @@ class OrderDetailsView extends GetView<OrderDetailsController> {
               child: PrimaryButtonComponent(
                 text: StringsAssetsConstants.receiver,
                 onTap: () {
-                  UrlLauncherService.callPhone(phoneNUmber: '${controller.orderData?.reciverPhone}');
+                  Get.back();
+
+                  UrlLauncherService.callPhone(
+                      phoneNUmber: '${controller.orderData?.reciverPhone}');
                 },
               ),
             ),
