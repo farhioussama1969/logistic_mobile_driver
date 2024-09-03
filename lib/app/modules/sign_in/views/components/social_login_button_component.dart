@@ -8,7 +8,12 @@ import 'package:loogisti/app/core/styles/text_styles.dart';
 
 class SocialLoginButtonComponent extends StatelessWidget {
   const SocialLoginButtonComponent(
-      {super.key, required this.iconPath, this.iconColor, required this.title, required this.onTap, required this.isLoading});
+      {super.key,
+      required this.iconPath,
+      this.iconColor,
+      required this.title,
+      required this.onTap,
+      required this.isLoading});
 
   final String iconPath;
   final Color? iconColor;
@@ -40,9 +45,10 @@ class SocialLoginButtonComponent extends StatelessWidget {
       ),
       child: TextButton(
         style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1000.r)),
+          foregroundColor: MainColors.primaryColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(1000.r)),
           backgroundColor: MainColors.transparentColor,
-          primary: MainColors.primaryColor,
         ),
         onPressed: () {
           FocusScope.of(context).requestFocus(FocusNode());

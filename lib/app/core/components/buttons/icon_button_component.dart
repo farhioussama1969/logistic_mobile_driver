@@ -40,7 +40,9 @@ class IconButtonComponent extends StatelessWidget {
       height: buttonHeight ?? 50.r,
       decoration: BoxDecoration(
         gradient: gradientBackgroundColor,
-        color: gradientBackgroundColor == null ? backgroundColor ?? MainColors.backgroundColor(context) : null,
+        color: gradientBackgroundColor == null
+            ? backgroundColor ?? MainColors.backgroundColor(context)
+            : null,
         borderRadius: BorderRadius.circular(borderRadius ?? 1000.r),
         boxShadow: [
           BoxShadow(
@@ -54,10 +56,11 @@ class IconButtonComponent extends StatelessWidget {
       ),
       child: TextButton(
         style: TextButton.styleFrom(
+          foregroundColor: iconColor ?? MainColors.textColor(context),
           padding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 1000.r)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 1000.r)),
           backgroundColor: MainColors.transparentColor,
-          primary: iconColor ?? MainColors.textColor(context),
         ),
         onPressed: () => onTap(),
         child: Center(

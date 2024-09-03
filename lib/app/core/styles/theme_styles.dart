@@ -4,7 +4,6 @@ import 'package:loogisti/app/core/styles/main_colors.dart';
 class ThemeStyles {
   static ThemeData lightTheme = ThemeData.light().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    backgroundColor: LightColors.backgroundColor,
     primaryColor: MainColors.primaryColor,
     scaffoldBackgroundColor: LightColors.backgroundColor,
     appBarTheme: const AppBarTheme(
@@ -25,7 +24,6 @@ class ThemeStyles {
         primary: MainColors.primaryColor,
       ),
     ),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: MainColors.primaryColor),
     extensions: <ThemeExtension<dynamic>>[
       const ColorsStyles(
         backgroundColor: LightColors.backgroundColor,
@@ -41,11 +39,13 @@ class ThemeStyles {
         //iconLogo: LightColors.iconLogo,
       ),
     ],
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: MainColors.primaryColor)
+        .copyWith(background: LightColors.backgroundColor),
   );
 
   static ThemeData darkTheme = ThemeData.dark().copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    backgroundColor: DarkColors.backgroundColor,
     primaryColor: MainColors.primaryColor,
     scaffoldBackgroundColor: DarkColors.backgroundColor,
     appBarTheme: const AppBarTheme(
@@ -66,7 +66,6 @@ class ThemeStyles {
         primary: MainColors.primaryColor,
       ),
     ),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: MainColors.primaryColor),
     extensions: <ThemeExtension<dynamic>>[
       const ColorsStyles(
         backgroundColor: DarkColors.backgroundColor,
@@ -82,5 +81,8 @@ class ThemeStyles {
         //iconLogo: DarkColors.iconLogo,
       ),
     ],
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: MainColors.primaryColor)
+        .copyWith(background: DarkColors.backgroundColor),
   );
 }

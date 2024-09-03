@@ -62,7 +62,9 @@ class PrimaryButtonComponent extends StatelessWidget {
       width: width,
       padding: EdgeInsets.symmetric(vertical: withoutPadding == true ? 0 : 4.h),
       decoration: BoxDecoration(
-        gradient: backgroundColor == null ? gradient ?? MainColors.primaryGradientColor : null,
+        gradient: backgroundColor == null
+            ? gradient ?? MainColors.primaryGradientColor
+            : null,
         color: backgroundColor,
         border: Border.all(
           color: borderColor ?? Colors.transparent,
@@ -82,10 +84,12 @@ class PrimaryButtonComponent extends StatelessWidget {
       ),
       child: TextButton(
         style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1000.r)),
+          foregroundColor: MainColors.primaryColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(1000.r)),
           backgroundColor: MainColors.transparentColor,
-          primary: MainColors.primaryColor,
-          padding: EdgeInsets.symmetric(vertical: withoutPadding == true ? 0 : 10.h),
+          padding:
+              EdgeInsets.symmetric(vertical: withoutPadding == true ? 0 : 10.h),
         ),
         onPressed: () {
           FocusScope.of(context).requestFocus(FocusNode());
@@ -114,7 +118,8 @@ class PrimaryButtonComponent extends StatelessWidget {
                             width: iconSize ?? 25.r,
                             color: iconColor ?? MainColors.textColor(context),
                           ),
-                        if (iconPath != null && text != '') SizedBox(width: 6.w),
+                        if (iconPath != null && text != '')
+                          SizedBox(width: 6.w),
                         if (text != '')
                           Text(
                             text,
