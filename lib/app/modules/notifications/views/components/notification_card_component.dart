@@ -14,7 +14,11 @@ import 'package:loogisti/app/core/styles/text_styles.dart';
 import 'package:loogisti/app/data/models/notification_model.dart';
 
 class NotificationCardComponent extends StatelessWidget {
-  const NotificationCardComponent({super.key, required this.notification, required this.deleteNotification, required this.isRead});
+  const NotificationCardComponent(
+      {super.key,
+      required this.notification,
+      required this.deleteNotification,
+      required this.isRead});
   final NotificationModel notification;
   final bool isRead;
   final Function(int notificationId) deleteNotification;
@@ -26,7 +30,9 @@ class NotificationCardComponent extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: MainColors.backgroundColor(context),
-          border: Border.all(color: MainColors.disableColor(context)!.withOpacity(0.3), width: 1.5.r),
+          border: Border.all(
+              color: MainColors.disableColor(context)!.withOpacity(0.3),
+              width: 1.5.r),
           borderRadius: BorderRadius.circular(15.r),
         ),
         //padding: EdgeInsets.all(10.r),
@@ -70,7 +76,8 @@ class NotificationCardComponent extends StatelessWidget {
                       Expanded(
                         child: Text(
                           notification.title ?? '',
-                          style: TextStyles.mediumLabelTextStyle(context).copyWith(
+                          style:
+                              TextStyles.mediumLabelTextStyle(context).copyWith(
                             fontSize: 16.sp,
                           ),
                           overflow: TextOverflow.clip,
@@ -93,8 +100,9 @@ class NotificationCardComponent extends StatelessWidget {
                       Expanded(
                         child: Text(
                           notification.message ?? '',
-                          style: TextStyles.mediumBodyTextStyle(context).copyWith(),
-                          maxLines: 2,
+                          style: TextStyles.mediumBodyTextStyle(context)
+                              .copyWith(),
+                          maxLines: 6,
                         ),
                       ),
                     ],
@@ -112,7 +120,8 @@ class NotificationCardComponent extends StatelessWidget {
                         Expanded(
                           child: Text(
                             notification.data ?? '',
-                            style: TextStyles.mediumBodyTextStyle(context).copyWith(
+                            style: TextStyles.mediumBodyTextStyle(context)
+                                .copyWith(
                               fontFamily: FontsFamilyAssetsConstants.bold,
                             ),
                             maxLines: 2,
